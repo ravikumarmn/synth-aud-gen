@@ -1,0 +1,180 @@
+{
+  "project_name": "Concept Test A",
+  "project_id": 1,
+  "evaluation_model": "gemini-2.5-flash",
+  "total_audiences_evaluated": 2,
+  "overall_average_score": 1.0,
+  "audience_evaluations": [
+    {
+      "audience_index": 0,
+      "total_members_evaluated": 5,
+      "average_score": 1.0,
+      "score_distribution": {
+        "1": 5,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      },
+      "sample_evaluations": [
+        {
+          "member_id": "AUD0_0001",
+          "audience_index": 0,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona in age, profession, and income. The persona is a young Gen Z content creator in India, while the audience member is an older Millennial corporate supervisor in the US, making the combination completely implausible.",
+          "strengths": [
+            "Gender matches the persona."
+          ],
+          "concerns": [
+            "Significant age mismatch (Gen Z vs. Old Millennial).",
+            "Professional background is completely different (content creator vs. corporate supervisor).",
+            "Income level is vastly different, and the location context (India vs. US-centric screener) is mismatched.",
+            "Internal inconsistency regarding company size between the generated attributes and screener responses."
+          ]
+        },
+        {
+          "member_id": "AUD0_0003",
+          "audience_index": 0,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona across all key attributes. The persona is a 23-year-old Gen Z content creator with primary education, while the generated member is an 'Old Millennial' VP in a large company with a significantly higher income and a business based in the US, which is completely misaligned.",
+          "strengths": [],
+          "concerns": [
+            "Age group (Gen Z vs. Old Millennial) is a direct contradiction.",
+            "Job title (Content Creator vs. VP) and company size (self-employed vs. 500-1000 employees) are completely misaligned.",
+            "Income level is vastly different from the persona's stated annual earnings.",
+            "Screener responses introduce further inconsistencies, mentioning a US-based business with 2-4 employees and extremely high revenue, which contradicts both the persona's location/profession and the generated 'VP in a 500-1000 employee company' attribute."
+          ]
+        },
+        {
+          "member_id": "AUD0_0004",
+          "audience_index": 0,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona across all key attributes including age, gender, profession, and income level. The persona is a young male Gen Z content creator in India, while the audience member is an older female Millennial supervisor in the US. Additionally, the audience member's own attributes contain significant internal inconsistencies regarding company size.",
+          "strengths": [],
+          "concerns": [
+            "Age group mismatch (Gen Z vs. Old Millennial)",
+            "Gender mismatch (Male vs. Female)",
+            "Professional background mismatch (Self-employed content creator vs. Full-time supervisor in a large company)",
+            "Income level mismatch (₹750k-₹990k annually vs. >$50k USD)",
+            "Geographic/cultural context mismatch (India vs. US implied by screener)",
+            "Internal inconsistency in company size attributes (500-1000 employees vs. 2-4 employees in screener)"
+          ]
+        },
+        {
+          "member_id": "AUD0_0002",
+          "audience_index": 0,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona in age, gender, professional context, and geographical location. Additionally, the audience member's own attributes are internally inconsistent, showing conflicting company sizes and an implausible income for a 'Director' role.",
+          "strengths": [],
+          "concerns": [
+            "Significant age mismatch (Gen Z vs Old Millennial).",
+            "Gender mismatch (Male vs Female).",
+            "Professional context mismatch (Content Creator vs Corporate Director).",
+            "Geographical context mismatch (India-based persona vs US-implied audience member).",
+            "Internal inconsistency regarding company size (500-1000 employees vs 2-4 employees).",
+            "Implausible income (<$50k) for a Director, especially in a company with stated high revenue."
+          ]
+        },
+        {
+          "member_id": "AUD0_0005",
+          "audience_index": 0,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona across multiple critical attributes. The age group, professional role, company size, and especially the financial details and implied location from screener responses are all drastically misaligned with the Gen Z content creator persona.",
+          "strengths": [
+            "Gender (male) matches the persona."
+          ],
+          "concerns": [
+            "Significant age mismatch (Gen Z 23 vs. Old Millennial 36-45).",
+            "Professional role mismatch (Content Creator/YouTuber vs. Supervisor in a company with 100-500 employees).",
+            "Extreme income/revenue discrepancy (Persona's $9k-$12k annual income vs. $100M-$250M business revenue in screener).",
+            "Location inconsistency (Persona in Mumbai, India vs. screener questions referencing 'US').",
+            "Internal inconsistency in employee count (100-500 employees in attributes vs. 2-4 employees for 'his business' in screener)."
+          ]
+        }
+      ]
+    },
+    {
+      "audience_index": 1,
+      "total_members_evaluated": 5,
+      "average_score": 1.0,
+      "score_distribution": {
+        "1": 5,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0
+      },
+      "sample_evaluations": [
+        {
+          "member_id": "AUD1_0002",
+          "audience_index": 1,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona across all key attributes. The age group, job title, income, and company size are all drastically different, making it impossible to imagine this person realistically aligning with a Gen Z content creator.",
+          "strengths": [],
+          "concerns": [
+            "Age mismatch: Gen Z (23) vs. Old Millennial (36-45).",
+            "Professional mismatch: Content Creator vs. VP in a large company (500-1000 employees).",
+            "Income mismatch: ~$9k-$12k annually vs. >$50k (and implied much higher for a VP).",
+            "Contextual mismatch: Persona is in Mumbai, India, while screener responses are US-centric and imply a large traditional business, not a content creation venture.",
+            "Internal inconsistency: 'Employees in company: 500-1000' conflicts with screener response '2 to 4 employees' for 'your business'."
+          ]
+        },
+        {
+          "member_id": "AUD1_0005",
+          "audience_index": 1,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona across all key attributes. The age, income, job title, and company size are vastly different from a 23-year-old Gen Z content creator. Furthermore, the screener responses introduce internal inconsistencies and a geographic mismatch (US vs. India) that make the profile completely implausible.",
+          "strengths": [],
+          "concerns": [
+            "Significant age mismatch (Gen Z vs. Old Millennial)",
+            "Income level is vastly different from the persona's annual earnings",
+            "Professional role (Director in a large company) does not align with a content creator",
+            "Company size attributes are inconsistent and do not fit the persona",
+            "Screener responses imply a US-based business, contradicting the persona's location in Mumbai, India",
+            "Business revenue scale is completely misaligned with the persona's individual income"
+          ]
+        },
+        {
+          "member_id": "AUD1_0001",
+          "audience_index": 1,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona across all key attributes. The persona is a 23-year-old male Gen Z content creator in Mumbai, while the audience member is an Old Millennial female supervisor earning significantly more, with screener responses indicating a US-based corporate role. There are also internal inconsistencies within the audience member's screener responses regarding company size.",
+          "strengths": [],
+          "concerns": [
+            "Significant mismatch in age group (Gen Z vs. Old Millennial) and gender (Male vs. Female).",
+            "Professional role (content creator vs. corporate supervisor) and income level are entirely different.",
+            "Screener responses imply a US location, contradicting the persona's Mumbai location, and contain internal contradictions regarding company size."
+          ]
+        },
+        {
+          "member_id": "AUD1_0004",
+          "audience_index": 1,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member is fundamentally implausible due to severe internal contradictions regarding company size and revenue (100-500 employees vs. 2-4 employees, and $100M+ revenue). Additionally, the 'Old Millennial' age group significantly mismatches the Gen Z persona, and the US-centric screener questions conflict with the persona's Indian location.",
+          "strengths": [],
+          "concerns": [
+            "Severe internal contradictions in company size and revenue figures.",
+            "Significant age mismatch (Old Millennial vs. Gen Z persona).",
+            "Geographical mismatch (US-centric questions for an Indian persona).",
+            "Professional background (Supervisor) doesn't align well with the persona's content focus or likely audience."
+          ]
+        },
+        {
+          "member_id": "AUD1_0003",
+          "audience_index": 1,
+          "alignment_score": 1,
+          "reasoning": "The generated audience member fundamentally contradicts the source persona across almost all attributes. The age group, job title, employment status, and company size are drastically different from a 23-year-old Gen Z content creator. Additionally, the screener responses introduce internal inconsistencies and are geographically misaligned with the persona's location in Mumbai.",
+          "strengths": [
+            "Gender matches (male)"
+          ],
+          "concerns": [
+            "Age group (Old Millennial) is a significant mismatch with the Gen Z persona.",
+            "Job title (Director) and company size (500-1000 employees) are completely inconsistent with a self-employed content creator with primary education.",
+            "Screener responses contradict the persona's employment type and location (US vs. India), and also contradict other generated attributes regarding company size.",
+            "Income level and its context are misaligned with the persona's specific earnings as a content creator."
+          ]
+        }
+      ]
+    }
+  ]
+}

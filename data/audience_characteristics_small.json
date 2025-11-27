@@ -1,0 +1,766 @@
+{
+  "project_name": "Concept Test A",
+  "project_description": "Testing moisturizers",
+  "project_id": 1,
+  "user_id": 1,
+  "request_id": "REQ-2-1763632735916",
+  "generation_model": "gemini-2.5-flash",
+  "total_audiences": 2,
+  "total_members_processed": 10,
+  "total_successfully_generated": 10,
+  "total_failed": 0,
+  "audiences": [
+    {
+      "audience_index": 0,
+      "sample_size": 5,
+      "has_quota": true,
+      "variable_summary": [
+        {
+          "variableName": "Age Group",
+          "selectedOption": "Old Millennials (36-45)",
+          "breakdown_percentages": {
+            "male": 41.67,
+            "female": 58.33
+          },
+          "sample_distribution": {
+            "male": 104,
+            "female": 146
+          },
+          "original_breakdown": {
+            "male": 100,
+            "female": 140
+          }
+        },
+        {
+          "variableName": "Income",
+          "breakdown_percentages": {
+            "<50k": 28.57,
+            ">50k": 71.43
+          },
+          "sample_distribution": {
+            "<50k": 71,
+            ">50k": 179
+          },
+          "original_breakdown": {
+            "<50k": 40,
+            ">50k": 100
+          }
+        },
+        {
+          "variableName": "Employees in company",
+          "breakdown_percentages": {
+            "1-100": 4.17,
+            "100-500": 22.92,
+            "500-1000": 72.92,
+            "1000-10000": 0.0
+          },
+          "sample_distribution": {
+            "1-100": 11,
+            "100-500": 57,
+            "500-1000": 182,
+            "1000-10000": 0
+          },
+          "original_breakdown": {
+            "1-100": 40,
+            "100-500": 220,
+            "500-1000": 700,
+            "1000-10000": 0
+          }
+        },
+        {
+          "variableName": "Job Title",
+          "breakdown_percentages": {
+            "C-Level": 11.11,
+            "VP": 18.52,
+            "Director": 25.93,
+            "Supervisor": 44.44,
+            "Manager": 0.0,
+            "Associate": 0.0
+          },
+          "sample_distribution": {
+            "C-Level": 28,
+            "VP": 46,
+            "Director": 65,
+            "Supervisor": 111,
+            "Manager": 0,
+            "Associate": 0
+          },
+          "original_breakdown": {
+            "C-Level": 3,
+            "VP": 5,
+            "Director": 7,
+            "Supervisor": 12,
+            "Manager": 0,
+            "Associate": 0
+          }
+        }
+      ],
+      "members": [
+        {
+          "member_id": "AUD0_0001",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD0_0001",
+            "audience_index": 0,
+            "about": "A young man living in Mumbai, he possesses a keen eye for urban landscapes and the nuanced stories embedded within city life. Despite holding a stable corporate role, his true passion lies in creative expression and digital storytelling. He's an early adopter of new digital platforms and tools, constantly experimenting with ways to document and share his unique perspective on Mumbai's vibrant culture. He embraces a minimalist lifestyle, prioritizing experiences and creative output over material accumulation, finding satisfaction in crafting authentic narratives. He's often found exploring different neighborhoods, capturing moments and ideas for his next creative project.",
+            "goals_and_motivations": [
+              "To develop compelling digital content that authentically captures the essence of urban life and resonates with a broad audience.",
+              "To continuously hone his creative and technical skills in video production, editing, and digital media, pushing the boundaries of his storytelling capabilities.",
+              "To build a recognized personal brand and a supportive online community that values unique perspectives and insightful portrayals of everyday experiences."
+            ],
+            "frustrations": [
+              "Juggling the demands of a full-time supervisory role with the significant time commitment required for his ambitious creative projects.",
+              "The financial and logistical challenges of investing in professional-grade equipment and software to elevate the quality of his content.",
+              "Gaining consistent visibility and standing out amidst a saturated digital content market, often feeling overlooked despite his efforts."
+            ],
+            "need_state": "Expressive and ambitious, constantly seeking outlets for his creativity and driven to achieve recognition and impact through his unique storytelling.",
+            "occasions": "He routinely consumes competitor content and industry trends during his daily commute and evening downtime, using it for inspiration and market research. He dedicates significant portions of his evenings and weekends to planning, shooting, and editing his personal creative projects, often uploading new content during these periods."
+          }
+        },
+        {
+          "member_id": "AUD0_0002",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD0_0002",
+            "audience_index": 0,
+            "about": "This individual has a keen eye for narratives that capture the essence of city living, often seeking out and amplifying voices that reflect authentic urban experiences. Their digital footprint is active and discerning; they're an early adopter of new platforms, not necessarily as a creator, but as a curator and strategist, always looking for innovative ways to engage audiences within a larger organizational context. They embrace a minimalist philosophy, preferring thoughtful consumption and impactful experiences over material accumulation. Their creativity manifests in strategic problem-solving and fostering community engagement, often through digital initiatives. They value experiences and genuine connections, finding joy in exploring local cultures and advocating for sustainable urban practices.",
+            "goals_and_motivations": [
+              "To develop and implement impactful digital strategies that authentically portray urban life and resonate with diverse communities.",
+              "To continuously learn and adapt to evolving digital trends, leveraging new tools to foster an engaged and loyal audience for their organization's initiatives.",
+              "To contribute to meaningful urban development and cultural preservation, integrating themes of sustainability and community engagement into their professional work."
+            ],
+            "frustrations": [
+              "Navigating bureaucratic processes and securing adequate resources for innovative digital projects within a large organization.",
+              "Ensuring the quality and authenticity of digital content while adhering to organizational guidelines and stakeholder expectations.",
+              "Experiencing barriers to accessing cutting-edge technology or specialized training needed to stay ahead in the rapidly changing digital landscape."
+            ],
+            "need_state": "Driven and proactive in seeking innovative solutions and platforms for impactful storytelling.",
+            "occasions": "Engages with industry whitepapers and competitor analyses during work hours, participates in online forums about digital marketing and urban culture in the evenings, and spends weekends exploring local events and curating content ideas for future campaigns."
+          }
+        },
+        {
+          "member_id": "AUD0_0003",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD0_0003",
+            "audience_index": 0,
+            "about": "Rohan is a seasoned executive who, despite his corporate role, maintains a deeply creative and adventurous spirit. He's driven by a passion for crafting compelling narratives, not for public consumption like a YouTuber, but to articulate strategic visions and inspire change within his organization. As an early adopter, he's constantly exploring cutting-edge technologies and methodologies, seeking to integrate them into his company's operations. His approach to work and life leans towards efficiency and curated experiences rather than excessive consumption, valuing impactful outcomes over mere volume. He finds intellectual stimulation in the dynamic urban landscape, drawing parallels between city evolution and organizational transformation.",
+            "goals_and_motivations": [
+              "To drive significant digital innovation and transformation that redefines his company's market position.",
+              "To cultivate a high-performing, agile team that champions strategic initiatives and fosters a culture of continuous learning.",
+              "To integrate sustainable and ethical practices into core business strategies, reflecting a broader commitment to impact beyond profit."
+            ],
+            "frustrations": [
+              "Navigating organizational inertia and bureaucratic roadblocks inherent in a large corporate structure.",
+              "Balancing ambitious strategic visions with the practical constraints of budget cycles and legacy systems.",
+              "The constant challenge of attracting and retaining top-tier talent in a competitive industry, especially for specialized digital roles."
+            ],
+            "need_state": "Expressive and ambitious, seeking to translate complex ideas into actionable strategies and inspire widespread adoption.",
+            "occasions": "Engages with industry whitepapers, thought leadership articles, and competitor analyses to stay ahead of market trends; dedicates focused time on weekdays for strategic planning, team leadership, and stakeholder presentations, often reserving weekend hours for deep research, personal learning, and conceptualizing long-term visions."
+          }
+        },
+        {
+          "member_id": "AUD0_0004",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD0_0004",
+            "audience_index": 0,
+            "about": "Priya is a dynamic individual who thrives on the energy of urban living, approaching life with a thoughtful, minimalist mindset. She prioritizes meaningful experiences and intentional living over excessive material accumulation. Her natural creativity and a keen eye for detail often manifest in her passion for visual storytelling, whether through personal photography projects, curating online mood boards, or contributing to community art initiatives. She is digitally savvy and an early adopter of new platforms and tools, always seeking innovative ways to express ideas and connect with like-minded individuals. She enjoys exploring hidden gems in her city, appreciating its culture, architecture, and diverse communities, and subtly integrates these inspirations into her professional and personal life.",
+            "goals_and_motivations": [
+              "To lead projects that deliver significant impact and value, showcasing innovative solutions within her organization.",
+              "To foster a cohesive and high-performing team, inspiring growth and collaboration among her direct reports and peers.",
+              "To integrate principles of sustainable and mindful living into her personal routine and advocate for eco-conscious practices within her sphere of influence."
+            ],
+            "frustrations": [
+              "Navigating the competitive landscape of corporate advancement and internal politics within a large organization.",
+              "Balancing the demands of corporate objectives and strict timelines with her personal vision for project execution and team development.",
+              "Securing adequate budget and resources for innovative team projects and professional development initiatives."
+            ],
+            "need_state": "Expressive and ambitious",
+            "occasions": "Actively seeks out industry trend reports, leadership articles, and competitor analysis to stay informed and ahead. Engages in personal creative pursuits like photography or writing, or plans team initiatives and strategic outlines during evenings and weekends."
+          }
+        },
+        {
+          "member_id": "AUD0_0005",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": "<50k",
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD0_0005",
+            "audience_index": 0,
+            "about": "Arjun Sharma, a 25-year-old, embodies a unique blend of modern professional ambition and a grounded, thoughtful approach to life. Despite his supervisory role, he maintains a minimalist lifestyle, valuing experiences and impactful interactions over material possessions. He's deeply interested in urban dynamics, not necessarily as a creator, but as an observer and participant, appreciating the rhythm and stories within city life. Digitally, he's adept, using online platforms to stay updated on industry trends, learn new skills, and explore his hobbies, which might include urban photography or digital art. He's an early adopter of new technologies and methodologies, always looking for efficient ways to manage his team and projects. His creative spirit manifests in his problem-solving at work and in his personal pursuits, where he enjoys crafting narratives, whether through presentations or personal journaling.",
+            "goals_and_motivations": [
+              "To lead his team effectively, creating impactful projects that contribute significantly to the company's objectives.",
+              "To foster a collaborative and high-performing team environment, gaining their trust and respect through mentorship and support.",
+              "To continuously develop his leadership and technical skills, aiming for career advancement within his industry.",
+              "To integrate principles of efficiency and sustainable practices into his team's operations where possible, and live a mindful, minimalist lifestyle personally."
+            ],
+            "frustrations": [
+              "Navigating the complexities of corporate politics and standing out in a medium-sized company with 100-500 employees.",
+              "Balancing innovative project ideas and team initiatives with company budget constraints and established procedures.",
+              "Limited access to advanced tools or training resources for his team, hindering their potential and development.",
+              "Adapting to frequent changes in company policies or project priorities that impact his team's workflow and morale."
+            ],
+            "need_state": "Expressive and ambitious, constantly seeking opportunities to implement innovative solutions and advance his professional capabilities.",
+            "occasions": "Engages with industry news and professional development content during commutes or lunch breaks; collaborates on team projects and strategizes solutions during weekdays; dedicates weekends to personal interests like urban exploration, photography, or skill-building workshops."
+          }
+        }
+      ],
+      "generation_stats": {
+        "total_members": 5,
+        "successfully_generated": 5,
+        "failed": 0
+      }
+    },
+    {
+      "audience_index": 1,
+      "sample_size": 5,
+      "has_quota": true,
+      "variable_summary": [
+        {
+          "variableName": "Age Group",
+          "selectedOption": "Old Millennials (36-45)",
+          "breakdown_percentages": {
+            "male": 41.67,
+            "female": 58.33
+          },
+          "sample_distribution": {
+            "male": 42,
+            "female": 58
+          },
+          "original_breakdown": {
+            "male": 100,
+            "female": 140
+          }
+        },
+        {
+          "variableName": "Income",
+          "breakdown_percentages": {
+            "<50k": 28.57,
+            ">50k": 71.43
+          },
+          "sample_distribution": {
+            "<50k": 29,
+            ">50k": 71
+          },
+          "original_breakdown": {
+            "<50k": 40,
+            ">50k": 100
+          }
+        },
+        {
+          "variableName": "Employees in company",
+          "breakdown_percentages": {
+            "1-100": 4.17,
+            "100-500": 22.92,
+            "500-1000": 72.92,
+            "1000-10000": 0.0
+          },
+          "sample_distribution": {
+            "1-100": 4,
+            "100-500": 23,
+            "500-1000": 73,
+            "1000-10000": 0
+          },
+          "original_breakdown": {
+            "1-100": 40,
+            "100-500": 220,
+            "500-1000": 700,
+            "1000-10000": 0
+          }
+        },
+        {
+          "variableName": "Job Title",
+          "breakdown_percentages": {
+            "C-Level": 11.11,
+            "VP": 18.52,
+            "Director": 25.93,
+            "Supervisor": 44.44,
+            "Manager": 0.0,
+            "Associate": 0.0
+          },
+          "sample_distribution": {
+            "C-Level": 11,
+            "VP": 19,
+            "Director": 26,
+            "Supervisor": 44,
+            "Manager": 0,
+            "Associate": 0
+          },
+          "original_breakdown": {
+            "C-Level": 3,
+            "VP": 5,
+            "Director": 7,
+            "Supervisor": 12,
+            "Manager": 0,
+            "Associate": 0
+          }
+        }
+      ],
+      "members": [
+        {
+          "member_id": "AUD1_0001",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD1_0001",
+            "audience_index": 1,
+            "about": "Aanya Sharma, a 26-year-old Supervisor in a large corporate firm in Mumbai, thrives on bringing innovative solutions to her team's projects. While her professional life is structured, she maintains a keen interest in digital trends and content creation, often exploring new platforms as an early adopter. She values efficiency and clarity in all aspects of her life, extending a minimalist aesthetic to her personal space and digital consumption. Her weekends are often spent exploring Mumbai's hidden gems, documenting her experiences through photography and short-form video for a private audience, reflecting her underlying creative and expressive nature. She is always on the lookout for ways to integrate cutting-edge tools and creative strategies into her work processes.",
+            "goals_and_motivations": [
+              "To lead her team in delivering high-impact projects that set new standards within the company.",
+              "To continuously develop her leadership and strategic planning skills to advance her career.",
+              "To foster a collaborative and innovative work environment that empowers her team members."
+            ],
+            "frustrations": [
+              "Navigating complex organizational bureaucracy and slow decision-making processes.",
+              "Ensuring consistent quality and adherence to high standards across diverse team projects.",
+              "Limited time outside of her demanding professional role to dedicate to her personal creative pursuits."
+            ],
+            "need_state": "Expressive and ambitious",
+            "occasions": "Engages with professional development content (webinars, industry reports) during lunch breaks or after work; consumes competitor analysis and trend forecasts early mornings; creates detailed project plans or innovative presentations during weekdays; experiments with personal digital content creation (photography, short videos) on weekends or evenings for creative outlet and skill practice."
+          }
+        },
+        {
+          "member_id": "AUD1_0002",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD1_0002",
+            "audience_index": 1,
+            "about": "As a seasoned professional, he maintains a discerning eye for the pulse of urban life, finding inspiration in its intricate narratives and evolving landscapes. He has a profound appreciation for digital content, not just as a consumer but also as someone who understands its strategic impact and potential for authentic storytelling. His lifestyle, despite his professional success, leans towards a thoughtful minimalism, prioritizing experiences and intentional living over accumulating possessions. He is always on the lookout for innovative ways to tell stories, whether through strategic communications in his corporate role or through personal creative endeavors that reflect his interest in city culture and sustainable practices.",
+            "goals_and_motivations": [
+              "To leverage his influence to drive impactful initiatives that resonate with authentic urban experiences, both professionally and personally.",
+              "To cultivate a respected personal brand and professional network that values creativity, strategic thinking, and compelling narratives.",
+              "To champion and integrate sustainable practices and themes into his sphere of influence, advocating for conscious living within a high-paced environment.",
+              "To achieve recognition for his strategic vision and creative contributions beyond his executive role, while maintaining a commitment to his core values and intentional lifestyle."
+            ],
+            "frustrations": [
+              "Navigating the complexities of corporate bureaucracy and legacy systems that can stifle innovation and efficient workflows.",
+              "Balancing the demands of strategic corporate objectives with the desire for authentic expression and creative freedom in his projects.",
+              "Finding dedicated time and mental space amidst a demanding schedule to pursue personal creative interests or engage deeply with new digital trends.",
+              "Keeping abreast of rapid technological shifts and evolving digital communication paradigms to ensure his strategies and personal content remain relevant and visible."
+            ],
+            "need_state": "He is driven by an inherent need to express complex ideas and strategic visions, coupled with an ambitious drive to leave a lasting, meaningful impact, both within his organization and through his personal pursuits.",
+            "occasions": "He routinely consumes industry analyses, thought leadership articles, and competitor strategies to inform his professional insights. In his personal time, he actively seeks out and engages with digital content that explores urban culture, design, and sustainable living, often on weekends or during his commute. He occasionally develops and shares his own insights or curated content, whether for internal presentations, industry panels, or personal platforms, often dedicating evenings or specific weekend slots to these creative outputs."
+          }
+        },
+        {
+          "member_id": "AUD1_0003",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD1_0003",
+            "audience_index": 1,
+            "about": "Rohan Sharma, a Director of Content Strategy at a large social impact organization in Mumbai, is a keen observer of urban life, driven by a desire to tell authentic stories. Despite his leadership role, his personal life embraces a minimalist philosophy, prioritizing experiences and meaningful contributions over material possessions. He is an early adopter of digital tools and platforms, constantly seeking innovative ways to engage audiences and advocate for causes close to his heart. His digital habits revolve around consuming insightful documentaries, exploring new content trends, and actively participating in online communities focused on urban development, ethical storytelling, and sustainable living. He channels his creative energy into both professional campaigns and personal side projects, always aiming for genuine connection and measurable impact.",
+            "goals_and_motivations": [
+              "To lead and implement impactful content strategies that drive social change and authentic representation of urban issues.",
+              "To continuously refine his storytelling and digital engagement skills, adapting to evolving media landscapes.",
+              "To build a strong professional network and reputation for ethical, creative leadership in the social impact sector.",
+              "To explore and integrate sustainable practices within his professional projects and personal lifestyle, influencing broader awareness."
+            ],
+            "frustrations": [
+              "Navigating bureaucratic hurdles and slow decision-making processes common in large organizations, which can stifle creative agility.",
+              "Balancing ambitious creative visions with limited budgets and resource constraints inherent in the non-profit or social impact sector.",
+              "Ensuring the quality and authenticity of content amidst pressures to meet organizational metrics and stakeholder expectations.",
+              "Keeping pace with rapid technological changes and platform algorithms to maintain visibility and engagement for campaigns."
+            ],
+            "need_state": "Expressive and ambitious, constantly seeking avenues to channel his creativity into meaningful impact.",
+            "occasions": "Engages with industry reports, competitor campaigns, and thought leadership content during morning commutes or lunch breaks to stay current. Actively participates in online forums and professional networks during evenings to exchange ideas and seek collaboration. Spends weekend mornings drafting concepts, refining pitches, or experimenting with new digital storytelling tools for upcoming projects or personal creative outlets. Consumes documentaries, urban exploration vlogs, and design inspiration on streaming platforms in the evenings for relaxation and creative stimulation."
+          }
+        },
+        {
+          "member_id": "AUD1_0004",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": "<50k",
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD1_0004",
+            "audience_index": 1,
+            "about": "This individual possesses a deep appreciation for urban life and its myriad stories, often seeking out authentic experiences within their city. They are an early adopter of digital trends, actively consuming content that inspires creativity and offers practical solutions for sustainable living. A naturally minimalist approach guides their lifestyle choices, prioritizing resourcefulness and mindful consumption. They have a keen interest in creative pursuits, perhaps through photography or documenting everyday observations, and are always looking for avenues to express their unique perspective and make a tangible impact within their community or personal projects.",
+            "goals_and_motivations": [
+              "Achieving recognition for her leadership and problem-solving skills within her supervisory role, aiming for a positive impact on her team's productivity and morale.",
+              "Continuously learning new skills and developing her professional capabilities to overcome career stagnation and foster personal growth.",
+              "Actively practicing and advocating for sustainable living, both personally and through small-scale community or workplace initiatives, driven by her minimalist values."
+            ],
+            "frustrations": [
+              "Navigating bureaucratic hurdles and inefficient processes within her company that hinder progress and innovative solutions.",
+              "The struggle to maintain high standards of quality and efficiency in her team's output due to limited budget and inadequate resources.",
+              "Lack of opportunities for career advancement or access to specialized training programs that would enable her to grow beyond her current role."
+            ],
+            "need_state": "Expressive and ambitious, seeking avenues for personal and professional development despite current constraints.",
+            "occasions": "Engages with professional development content, industry news, and inspirational creative works during daily commutes, lunch breaks, or quiet evenings. Dedicates weekends and available free time to personal creative projects, community volunteering, or skill-building activities."
+          }
+        },
+        {
+          "member_id": "AUD1_0005",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "screener_responses": [
+            {
+              "question": "Which of the following best describes your employment status?",
+              "answer": "Employed full-time (30 hours per week or more)"
+            },
+            {
+              "question": "Including yourself, approximately how many full-time equivalent staff does your business employ across all locations in the US?",
+              "answer": "2 to 4 employees"
+            },
+            {
+              "question": "What was the total revenue of your business in 2024 across all locations in the US?",
+              "answer": "$100 million to under $250 million"
+            }
+          ],
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          },
+          "generated_characteristics": {
+            "member_id": "AUD1_0005",
+            "audience_index": 1,
+            "about": "An individual with a strong creative and adventurous spirit, deeply invested in exploring and documenting urban life through thoughtful storytelling. They are an early adopter of digital platforms and tools, constantly seeking new ways to express their unique perspective and connect with audiences. Despite a demanding schedule, they maintain a minimalist approach to life, prioritizing meaningful experiences and impactful narratives over material accumulation. Their digital habits include actively seeking out new content, observing trends, and experimenting with various forms of digital expression, often focused on capturing the essence of their surroundings and advocating for sustainable practices.",
+            "goals_and_motivations": [
+              "To create impactful narratives and projects that authentically portray urban life experiences and foster unique perspectives.",
+              "To continuously learn and master new digital storytelling techniques and platforms to enhance their creative output.",
+              "To influence and inspire a community that values creativity, thoughtful content, and sustainable living practices, perhaps through thought leadership or personal projects."
+            ],
+            "frustrations": [
+              "The challenge of efficiently managing time and resources to pursue personal creative projects alongside professional commitments.",
+              "Maintaining high quality and originality in personal creative endeavors in a rapidly evolving digital landscape.",
+              "Navigating the complexities of audience reach and platform algorithms to ensure their unique content finds its intended impact."
+            ],
+            "need_state": "Expressive and ambitious",
+            "occasions": "Engages with diverse digital content, including industry trends, creative inspiration, and competitor analyses, often during commutes, lunch breaks, and evening wind-down periods. Dedicates evenings and weekends to personal creative pursuits such as writing, photography, and video editing, often leveraging advanced tools and platforms to bring their vision to life."
+          }
+        }
+      ],
+      "generation_stats": {
+        "total_members": 5,
+        "successfully_generated": 5,
+        "failed": 0
+      }
+    }
+  ]
+}
