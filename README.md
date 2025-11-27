@@ -1,8 +1,39 @@
 # synth-aud-gen
 
+Synthetic Audience Generation using Azure OpenAI GPT-4o.
 
+## Setup
 
-Does duplications of slots happens compulasary?
+1. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. Configure `.env` with your Azure OpenAI credentials:
+   ```
+   AZURE_OPENAI_API_KEY=your_azure_key_here
+   AZURE_OPENAI_ENDPOINT=https://your-endpoint.openai.azure.com/
+   AZURE_OPENAI_DEPLOYMENT=gpt-4o
+   AZURE_OPENAI_API_VERSION=2024-08-01-preview
+   ```
+
+## Usage
+
+### Generate Audience Characteristics
+```bash
+python generate_audience_characteristics.py -i data/attribute_slots.json -o data/output.json
+```
+
+### Evaluate Audience Alignment
+```bash
+python evaluate_audience.py -i data/audience_samples_small.json -o data/evaluation_results.json
+```
+
+---
+
+## FAQ
+
+### Does duplications of slots happens compulasary?
 
 Yes, duplications happen when the sample size exceeds the number of unique attribute combinations.
 

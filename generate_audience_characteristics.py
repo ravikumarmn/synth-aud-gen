@@ -4,7 +4,7 @@ Audience Characteristics Generator
 
 This script takes attribute slots (from attribute_slots.json) and generates
 detailed characteristics for each slot by using the persona template and
-slot attributes as input to Gemini LLM.
+slot attributes as input to Azure OpenAI GPT-4o.
 
 Input: attribute_slots.json with structure:
   - personas[]: Array of persona data
@@ -27,7 +27,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 from dataclasses import dataclass, asdict
-from openai import OpenAI
+from openai import AzureOpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -120,18 +120,18 @@ Generate a complete, realistic audience member profile as JSON."""
 
 
 def generate_member_characteristics(
-    client: OpenAI,
+    client: AzureOpenAI,
     member: dict[str, Any],
-    model: str = "gemini-2.5-flash",
+    model: str = "gpt-4o",
     max_retries: int = 3,
 ) -> GeneratedCharacteristics | None:
     """
     Generate characteristics for a single audience member using the LLM.
 
     Args:
-        client: OpenAI client configured for Gemini
+        client: AzureOpenAI client
         member: Audience member to generate characteristics for
-        model: Model name to use
+        model: Model name (deployment name) to use
         max_retries: Number of retries on failure
 
     Returns:
@@ -225,18 +225,18 @@ def convert_slots_to_members(persona_data: dict[str, Any]) -> list[dict[str, Any
 
 
 def generate_audience_characteristics(
-    client: OpenAI,
+    client: AzureOpenAI,
     persona_data: dict[str, Any],
-    model: str = "gemini-2.5-flash",
+    model: str = "gpt-4o",
     max_workers: int = 5,
 ) -> dict[str, Any]:
     """
     Generate characteristics for all members in a persona/audience.
 
     Args:
-        client: OpenAI client configured for Gemini
+        client: AzureOpenAI client
         persona_data: Persona dictionary with persona_template and attributes
-        model: Model name to use
+        model: Model name (deployment name) to use
         max_workers: Maximum number of concurrent API calls
 
     Returns:
@@ -313,50 +313,65 @@ def generate_audience_characteristics(
 def run_generation(
     input_path: Path,
     output_path: Path,
-    model: str = "gemini-2.5-flash",
+    model: str = "gpt-4o",
     max_workers: int = 5,
+    limit: int | None = None,
 ) -> dict[str, Any]:
     """
     Run characteristic generation on all audiences in the input file.
 
     Args:
-        input_path: Path to audience samples JSON file
+        input_path: Path to attribute slots JSON file
         output_path: Path to write generated results
-        model: Model name to use
+        model: Model name (deployment name) to use
         max_workers: Maximum concurrent API calls
+        limit: Maximum slots to process per audience (None = all)
 
     Returns:
         Complete results dictionary with generated characteristics
     """
-    # Initialize OpenAI client with Gemini endpoint
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise ValueError(
-            "GEMINI_API_KEY environment variable is required. "
-            "Get your API key from https://aistudio.google.com/apikey"
-        )
+    # Initialize Azure OpenAI client
+    api_key = os.getenv("AZURE_OPENAI_API_KEY")
+    endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+    api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-08-01-preview")
 
-    client = OpenAI(
+    if not api_key:
+        raise ValueError("AZURE_OPENAI_API_KEY environment variable is required.")
+    if not endpoint:
+        raise ValueError("AZURE_OPENAI_ENDPOINT environment variable is required.")
+
+    client = AzureOpenAI(
         api_key=api_key,
-        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        api_version=api_version,
+        azure_endpoint=endpoint,
     )
 
     # Load input data (attribute_slots.json format)
     with open(input_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
+    # Apply limit to attributes if specified
+    personas = data.get("personas", [])
+    if limit:
+        for persona in personas:
+            persona["attributes"] = persona.get("attributes", [])[:limit]
+            persona["total_slots"] = len(persona["attributes"])
+
     # Calculate total slots across all personas
-    total_slots = data.get(
-        "total_slots", sum(p.get("total_slots", 0) for p in data.get("personas", []))
+    total_slots = sum(
+        p.get("total_slots", len(p.get("attributes", []))) for p in personas
     )
 
     print(f"Loaded {data.get('total_audiences', 0)} audiences from {input_path}")
-    print(f"Total slots to process: {total_slots}")
+    print(
+        f"Total slots to process: {total_slots}"
+        + (f" (limited to {limit} per audience)" if limit else "")
+    )
 
     # Generate characteristics for each persona
     enriched_audiences: list[dict[str, Any]] = []
 
-    for persona_data in data.get("personas", []):
+    for persona_data in personas:
         enriched_audience = generate_audience_characteristics(
             client, persona_data, model, max_workers
         )
@@ -448,14 +463,20 @@ def main() -> None:
     parser.add_argument(
         "--model",
         type=str,
-        default="gemini-2.5-flash",
-        help="Model to use for generation (default: gemini-2.5-flash)",
+        default="gpt-4o",
+        help="Model (deployment name) to use for generation (default: gpt-4o)",
     )
     parser.add_argument(
         "--workers",
         type=int,
         default=5,
         help="Maximum concurrent API calls (default: 5)",
+    )
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Limit number of slots to process per audience (default: all)",
     )
 
     args = parser.parse_args()
@@ -476,6 +497,7 @@ def main() -> None:
             args.output,
             args.model,
             args.workers,
+            args.limit,
         )
         print_summary(results)
         print(f"\nFull results written to: {args.output}")

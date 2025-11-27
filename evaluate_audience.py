@@ -2,11 +2,9 @@
 """
 Audience-Persona Alignment Evaluator
 
-Uses Gemini 2.5 Flash as an LLM judge to evaluate how well generated audience
+Uses Azure OpenAI GPT-4o as an LLM judge to evaluate how well generated audience
 members align with their source persona characteristics. Scores each member
 from 1-5 based on coherence and plausibility.
-
-Uses OpenAI-compatible API approach with Google's Gemini.
 """
 
 import json
@@ -17,7 +15,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 from dataclasses import dataclass, asdict
-from openai import OpenAI
+from openai import AzureOpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -110,18 +108,18 @@ def create_evaluation_prompt(member: dict[str, Any]) -> str:
 
 
 def evaluate_member(
-    client: OpenAI,
+    client: AzureOpenAI,
     member: dict[str, Any],
-    model: str = "gemini-2.5-flash",
+    model: str = "gpt-4o",
     max_retries: int = 3,
 ) -> EvaluationResult | None:
     """
     Evaluate a single audience member using the LLM judge.
 
     Args:
-        client: OpenAI client configured for Gemini
+        client: AzureOpenAI client
         member: Audience member to evaluate
-        model: Model name to use
+        model: Model name (deployment name) to use
         max_retries: Number of retries on failure
 
     Returns:
@@ -148,7 +146,6 @@ def evaluate_member(
             message = response.choices[0].message
             content = message.content
 
-            # Gemini may return content in 'text' field or via refusal
             if content is None:
                 # Try alternative fields
                 content = getattr(message, "text", None)
@@ -192,18 +189,18 @@ def evaluate_member(
 
 
 def evaluate_audience(
-    client: OpenAI,
+    client: AzureOpenAI,
     audience: dict[str, Any],
-    model: str = "gemini-2.5-flash",
+    model: str = "gpt-4o",
     max_workers: int = 5,
 ) -> AudienceEvaluationSummary:
     """
     Evaluate all members from an audience using parallel API calls.
 
     Args:
-        client: OpenAI client configured for Gemini
+        client: AzureOpenAI client
         audience: Audience dictionary with members
-        model: Model name to use
+        model: Model name (deployment name) to use
         max_workers: Maximum number of concurrent API calls
 
     Returns:
@@ -266,7 +263,7 @@ def evaluate_audience(
 def run_evaluation(
     input_path: Path,
     output_path: Path,
-    model: str = "gemini-2.5-flash",
+    model: str = "gpt-4o",
 ) -> dict[str, Any]:
     """
     Run evaluation on all audiences in the input file.
@@ -274,22 +271,25 @@ def run_evaluation(
     Args:
         input_path: Path to audience samples JSON file
         output_path: Path to write evaluation results
-        model: Model name to use
+        model: Model name (deployment name) to use
 
     Returns:
         Complete evaluation results dictionary
     """
-    # Initialize OpenAI client with Gemini endpoint
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        raise ValueError(
-            "GEMINI_API_KEY environment variable is required. "
-            "Get your API key from https://aistudio.google.com/apikey"
-        )
+    # Initialize Azure OpenAI client
+    api_key = os.getenv("AZURE_OPENAI_API_KEY")
+    endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+    api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-08-01-preview")
 
-    client = OpenAI(
+    if not api_key:
+        raise ValueError("AZURE_OPENAI_API_KEY environment variable is required.")
+    if not endpoint:
+        raise ValueError("AZURE_OPENAI_ENDPOINT environment variable is required.")
+
+    client = AzureOpenAI(
         api_key=api_key,
-        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
+        api_version=api_version,
+        azure_endpoint=endpoint,
     )
 
     # Load input data
@@ -380,8 +380,8 @@ def main() -> None:
     parser.add_argument(
         "--model",
         type=str,
-        default="gemini-2.5-flash",
-        help="Model to use for evaluation (default: gemini-2.5-flash)",
+        default="gpt-4o",
+        help="Model (deployment name) to use for evaluation (default: gpt-4o)",
     )
 
     args = parser.parse_args()
