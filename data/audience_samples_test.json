@@ -96,11 +96,11 @@
           "member_id": "AUD0_0001",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -121,7 +121,7 @@
           "member_id": "AUD0_0002",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -146,11 +146,11 @@
           "member_id": "AUD0_0003",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -171,9 +171,9 @@
           "member_id": "AUD0_0004",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
@@ -196,11 +196,11 @@
           "member_id": "AUD0_0005",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -224,7 +224,7 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -246,11 +246,11 @@
           "member_id": "AUD0_0007",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -271,11 +271,11 @@
           "member_id": "AUD0_0008",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -299,8 +299,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -323,9 +323,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -346,11 +346,11 @@
           "member_id": "AUD0_0011",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -373,8 +373,8 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
+            "Income": "<50k",
+            "Employees in company": "500-1000",
             "Job Title": "VP"
           },
           "persona_template": {
@@ -398,9 +398,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -425,7 +425,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -450,7 +450,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -496,11 +496,11 @@
           "member_id": "AUD0_0017",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -525,7 +525,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -544,56 +544,6 @@
         },
         {
           "member_id": "AUD0_0019",
-          "audience_index": 0,
-          "attributes": {
-            "Age Group": "female",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0020",
-          "audience_index": 0,
-          "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0021",
           "audience_index": 0,
           "attributes": {
             "Age Group": "female",
@@ -618,13 +568,63 @@
           }
         },
         {
+          "member_id": "AUD0_0020",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD0_0021",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
           "member_id": "AUD0_0022",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -646,11 +646,11 @@
           "member_id": "AUD0_0023",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -671,10 +671,10 @@
           "member_id": "AUD0_0024",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -698,8 +698,8 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Income": "<50k",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -724,7 +724,7 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -748,9 +748,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -771,10 +771,10 @@
           "member_id": "AUD0_0028",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
+            "Employees in company": "500-1000",
             "Job Title": "VP"
           },
           "persona_template": {
@@ -796,9 +796,9 @@
           "member_id": "AUD0_0029",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -824,8 +824,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -848,9 +848,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -875,7 +875,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -900,7 +900,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -921,7 +921,7 @@
           "member_id": "AUD0_0034",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -946,11 +946,11 @@
           "member_id": "AUD0_0035",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -974,7 +974,7 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -998,9 +998,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1021,10 +1021,10 @@
           "member_id": "AUD0_0038",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
+            "Income": ">50k",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -1046,11 +1046,11 @@
           "member_id": "AUD0_0039",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1071,11 +1071,11 @@
           "member_id": "AUD0_0040",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1099,8 +1099,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1121,11 +1121,11 @@
           "member_id": "AUD0_0042",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1150,7 +1150,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1171,11 +1171,11 @@
           "member_id": "AUD0_0044",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1196,9 +1196,9 @@
           "member_id": "AUD0_0045",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -1225,7 +1225,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1248,7 +1248,7 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -1296,10 +1296,10 @@
           "member_id": "AUD0_0049",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Income": "<50k",
+            "Employees in company": "100-500",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -1321,10 +1321,10 @@
           "member_id": "AUD0_0050",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "1-100",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -1346,11 +1346,11 @@
           "member_id": "AUD0_0051",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -1398,9 +1398,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1424,8 +1424,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "C-Level"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1446,10 +1446,10 @@
           "member_id": "AUD0_0055",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
+            "Income": "<50k",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -1471,11 +1471,11 @@
           "member_id": "AUD0_0056",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1496,7 +1496,7 @@
           "member_id": "AUD0_0057",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
@@ -1523,7 +1523,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "VP"
           },
@@ -1573,9 +1573,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1598,7 +1598,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -1621,7 +1621,7 @@
           "member_id": "AUD0_0062",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -1648,9 +1648,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -1696,11 +1696,11 @@
           "member_id": "AUD0_0065",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -1721,11 +1721,11 @@
           "member_id": "AUD0_0066",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "C-Level"
+            "Employees in company": "1-100",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -1748,9 +1748,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Income": "<50k",
+            "Employees in company": "1-100",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1771,11 +1771,11 @@
           "member_id": "AUD0_0068",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -1799,8 +1799,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -1824,8 +1824,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -1846,7 +1846,7 @@
           "member_id": "AUD0_0071",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -1873,9 +1873,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1896,11 +1896,11 @@
           "member_id": "AUD0_0073",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -1924,7 +1924,7 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -1946,11 +1946,11 @@
           "member_id": "AUD0_0075",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -1971,11 +1971,11 @@
           "member_id": "AUD0_0076",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -1994,6 +1994,31 @@
         },
         {
           "member_id": "AUD0_0077",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD0_0078",
           "audience_index": 0,
           "attributes": {
             "Age Group": "male",
@@ -2018,37 +2043,12 @@
           }
         },
         {
-          "member_id": "AUD0_0078",
-          "audience_index": 0,
-          "attributes": {
-            "Age Group": "female",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
           "member_id": "AUD0_0079",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -2071,7 +2071,7 @@
           "member_id": "AUD0_0080",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -2124,8 +2124,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2148,9 +2148,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2174,8 +2174,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -2196,11 +2196,11 @@
           "member_id": "AUD0_0085",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -2221,11 +2221,11 @@
           "member_id": "AUD0_0086",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2271,11 +2271,11 @@
           "member_id": "AUD0_0088",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Income": ">50k",
+            "Employees in company": "1-100",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2296,11 +2296,11 @@
           "member_id": "AUD0_0089",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -2321,9 +2321,9 @@
           "member_id": "AUD0_0090",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -2348,7 +2348,7 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "100-500",
             "Job Title": "Director"
           },
@@ -2371,11 +2371,11 @@
           "member_id": "AUD0_0092",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2421,11 +2421,11 @@
           "member_id": "AUD0_0094",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "C-Level"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -2446,11 +2446,11 @@
           "member_id": "AUD0_0095",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2475,7 +2475,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -2496,11 +2496,11 @@
           "member_id": "AUD0_0097",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2546,9 +2546,9 @@
           "member_id": "AUD0_0099",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -2574,8 +2574,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -2598,7 +2598,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -2623,9 +2623,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -2648,7 +2648,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -2674,7 +2674,7 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -2698,9 +2698,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2721,11 +2721,11 @@
           "member_id": "AUD0_0106",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2746,11 +2746,11 @@
           "member_id": "AUD0_0107",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -2773,9 +2773,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Income": "<50k",
+            "Employees in company": "100-500",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -2796,11 +2796,11 @@
           "member_id": "AUD0_0109",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -2823,9 +2823,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2846,10 +2846,10 @@
           "member_id": "AUD0_0111",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -2874,7 +2874,7 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -2896,11 +2896,11 @@
           "member_id": "AUD0_0113",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -2923,9 +2923,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -2946,9 +2946,9 @@
           "member_id": "AUD0_0115",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -2971,11 +2971,11 @@
           "member_id": "AUD0_0116",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -2994,31 +2994,6 @@
         },
         {
           "member_id": "AUD0_0117",
-          "audience_index": 0,
-          "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0118",
           "audience_index": 0,
           "attributes": {
             "Age Group": "female",
@@ -3043,14 +3018,39 @@
           }
         },
         {
-          "member_id": "AUD0_0119",
+          "member_id": "AUD0_0118",
           "audience_index": 0,
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD0_0119",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3073,9 +3073,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -3096,9 +3096,9 @@
           "member_id": "AUD0_0121",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -3125,7 +3125,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3148,9 +3148,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3171,11 +3171,11 @@
           "member_id": "AUD0_0124",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "1-100",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3221,11 +3221,11 @@
           "member_id": "AUD0_0126",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3248,9 +3248,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3271,11 +3271,11 @@
           "member_id": "AUD0_0128",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3299,8 +3299,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -3346,7 +3346,7 @@
           "member_id": "AUD0_0131",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -3371,11 +3371,11 @@
           "member_id": "AUD0_0132",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -3396,10 +3396,10 @@
           "member_id": "AUD0_0133",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "1-100",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -3421,11 +3421,11 @@
           "member_id": "AUD0_0134",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3449,8 +3449,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -3496,11 +3496,11 @@
           "member_id": "AUD0_0137",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3521,11 +3521,11 @@
           "member_id": "AUD0_0138",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "100-500",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3546,11 +3546,11 @@
           "member_id": "AUD0_0139",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3573,9 +3573,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -3596,11 +3596,11 @@
           "member_id": "AUD0_0141",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -3621,10 +3621,10 @@
           "member_id": "AUD0_0142",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "1-100",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -3649,8 +3649,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "VP"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3671,11 +3671,11 @@
           "member_id": "AUD0_0144",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -3696,11 +3696,11 @@
           "member_id": "AUD0_0145",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -3721,11 +3721,11 @@
           "member_id": "AUD0_0146",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3749,8 +3749,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Employees in company": "1-100",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -3769,31 +3769,6 @@
         },
         {
           "member_id": "AUD0_0148",
-          "audience_index": 0,
-          "attributes": {
-            "Age Group": "female",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0149",
           "audience_index": 0,
           "attributes": {
             "Age Group": "female",
@@ -3818,14 +3793,39 @@
           }
         },
         {
+          "member_id": "AUD0_0149",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
           "member_id": "AUD0_0150",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -3848,9 +3848,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3874,8 +3874,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -3896,11 +3896,11 @@
           "member_id": "AUD0_0153",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3921,11 +3921,11 @@
           "member_id": "AUD0_0154",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -3948,7 +3948,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
@@ -3971,11 +3971,11 @@
           "member_id": "AUD0_0156",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4000,7 +4000,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4021,11 +4021,11 @@
           "member_id": "AUD0_0158",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4046,11 +4046,11 @@
           "member_id": "AUD0_0159",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4071,11 +4071,11 @@
           "member_id": "AUD0_0160",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4098,9 +4098,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4121,11 +4121,11 @@
           "member_id": "AUD0_0162",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -4149,8 +4149,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -4174,8 +4174,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4196,11 +4196,11 @@
           "member_id": "AUD0_0165",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "C-Level"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4223,9 +4223,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Income": "<50k",
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4249,8 +4249,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4271,11 +4271,11 @@
           "member_id": "AUD0_0168",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4296,7 +4296,7 @@
           "member_id": "AUD0_0169",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -4321,11 +4321,11 @@
           "member_id": "AUD0_0170",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -4348,9 +4348,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4375,7 +4375,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4396,11 +4396,11 @@
           "member_id": "AUD0_0173",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4423,7 +4423,7 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "100-500",
             "Job Title": "C-Level"
           },
@@ -4450,7 +4450,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -4471,35 +4471,10 @@
           "member_id": "AUD0_0176",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0177",
-          "audience_index": 0,
-          "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Income": "<50k",
+            "Employees in company": "100-500",
             "Job Title": "C-Level"
           },
           "persona_template": {
@@ -4518,57 +4493,7 @@
           }
         },
         {
-          "member_id": "AUD0_0178",
-          "audience_index": 0,
-          "attributes": {
-            "Age Group": "female",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0179",
-          "audience_index": 0,
-          "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0180",
+          "member_id": "AUD0_0177",
           "audience_index": 0,
           "attributes": {
             "Age Group": "female",
@@ -4593,14 +4518,89 @@
           }
         },
         {
-          "member_id": "AUD0_0181",
+          "member_id": "AUD0_0178",
           "audience_index": 0,
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD0_0179",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": "<50k",
             "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD0_0180",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD0_0181",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -4621,7 +4621,7 @@
           "member_id": "AUD0_0182",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -4649,8 +4649,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -4671,11 +4671,11 @@
           "member_id": "AUD0_0184",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -4696,10 +4696,10 @@
           "member_id": "AUD0_0185",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "C-Level"
           },
           "persona_template": {
@@ -4746,11 +4746,11 @@
           "member_id": "AUD0_0187",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -4771,11 +4771,11 @@
           "member_id": "AUD0_0188",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "1-100",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4798,9 +4798,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -4824,8 +4824,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4846,11 +4846,11 @@
           "member_id": "AUD0_0191",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "C-Level"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -4871,11 +4871,11 @@
           "member_id": "AUD0_0192",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -4898,9 +4898,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4925,7 +4925,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -4948,9 +4948,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -4971,11 +4971,11 @@
           "member_id": "AUD0_0196",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "1-100",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -4998,9 +4998,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -5025,7 +5025,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -5046,11 +5046,11 @@
           "member_id": "AUD0_0199",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5071,11 +5071,11 @@
           "member_id": "AUD0_0200",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "C-Level"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -5100,7 +5100,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5121,11 +5121,11 @@
           "member_id": "AUD0_0202",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5146,11 +5146,11 @@
           "member_id": "AUD0_0203",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5174,8 +5174,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -5246,31 +5246,6 @@
           "member_id": "AUD0_0207",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
-          },
-          "persona_template": {
-            "id": 152,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD0_0208",
-          "audience_index": 0,
-          "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
@@ -5293,14 +5268,39 @@
           }
         },
         {
-          "member_id": "AUD0_0209",
+          "member_id": "AUD0_0208",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
+          },
+          "persona_template": {
+            "id": 152,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD0_0209",
+          "audience_index": 0,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -5325,7 +5325,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -5350,7 +5350,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5374,7 +5374,7 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "VP"
           },
           "persona_template": {
@@ -5398,7 +5398,7 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -5421,10 +5421,10 @@
           "member_id": "AUD0_0214",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
+            "Income": ">50k",
+            "Employees in company": "1-100",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -5446,11 +5446,11 @@
           "member_id": "AUD0_0215",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -5475,7 +5475,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5496,11 +5496,11 @@
           "member_id": "AUD0_0217",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5525,7 +5525,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5548,7 +5548,7 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -5573,9 +5573,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -5596,10 +5596,10 @@
           "member_id": "AUD0_0221",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -5646,11 +5646,11 @@
           "member_id": "AUD0_0223",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -5674,8 +5674,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -5696,11 +5696,11 @@
           "member_id": "AUD0_0225",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -5725,7 +5725,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -5746,7 +5746,7 @@
           "member_id": "AUD0_0227",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
@@ -5773,8 +5773,8 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Income": "<50k",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -5796,11 +5796,11 @@
           "member_id": "AUD0_0229",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5821,11 +5821,11 @@
           "member_id": "AUD0_0230",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -5846,11 +5846,11 @@
           "member_id": "AUD0_0231",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5875,7 +5875,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -5900,7 +5900,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5921,11 +5921,11 @@
           "member_id": "AUD0_0234",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5950,7 +5950,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -5973,9 +5973,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -5996,11 +5996,11 @@
           "member_id": "AUD0_0237",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -6024,7 +6024,7 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -6046,10 +6046,10 @@
           "member_id": "AUD0_0239",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
+            "Income": ">50k",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -6075,7 +6075,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -6100,7 +6100,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -6125,7 +6125,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -6146,11 +6146,11 @@
           "member_id": "AUD0_0243",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -6171,10 +6171,10 @@
           "member_id": "AUD0_0244",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
+            "Income": ">50k",
+            "Employees in company": "1-100",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -6196,11 +6196,11 @@
           "member_id": "AUD0_0245",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 152,
@@ -6221,11 +6221,11 @@
           "member_id": "AUD0_0246",
           "audience_index": 0,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -6250,7 +6250,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 152,
@@ -6273,9 +6273,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 152,
@@ -6300,7 +6300,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -6323,9 +6323,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 152,
@@ -6436,9 +6436,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -6459,9 +6459,9 @@
           "member_id": "AUD1_0002",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -6513,7 +6513,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -6534,11 +6534,11 @@
           "member_id": "AUD1_0005",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -6559,7 +6559,7 @@
           "member_id": "AUD1_0006",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -6584,31 +6584,6 @@
           "member_id": "AUD1_0007",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "VP"
-          },
-          "persona_template": {
-            "id": 153,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD1_0008",
-          "audience_index": 1,
-          "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
@@ -6631,12 +6606,37 @@
           }
         },
         {
-          "member_id": "AUD1_0009",
+          "member_id": "AUD1_0008",
           "audience_index": 1,
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
+            "Employees in company": "100-500",
+            "Job Title": "C-Level"
+          },
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD1_0009",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -6663,7 +6663,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -6684,10 +6684,10 @@
           "member_id": "AUD1_0011",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "1-100",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -6711,7 +6711,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -6736,8 +6736,8 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
+            "Income": ">50k",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -6759,7 +6759,7 @@
           "member_id": "AUD1_0014",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -6788,7 +6788,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -6811,9 +6811,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Income": "<50k",
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -6837,8 +6837,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 153,
@@ -6884,10 +6884,10 @@
           "member_id": "AUD1_0019",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -6911,9 +6911,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -6936,7 +6936,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -6959,35 +6959,10 @@
           "member_id": "AUD1_0022",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
-          },
-          "persona_template": {
-            "id": 153,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD1_0023",
-          "audience_index": 1,
-          "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
+            "Income": ">50k",
+            "Employees in company": "100-500",
             "Job Title": "VP"
           },
           "persona_template": {
@@ -7006,32 +6981,7 @@
           }
         },
         {
-          "member_id": "AUD1_0024",
-          "audience_index": 1,
-          "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "C-Level"
-          },
-          "persona_template": {
-            "id": 153,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD1_0025",
+          "member_id": "AUD1_0023",
           "audience_index": 1,
           "attributes": {
             "Age Group": "female",
@@ -7056,10 +7006,60 @@
           }
         },
         {
-          "member_id": "AUD1_0026",
+          "member_id": "AUD1_0024",
           "audience_index": 1,
           "attributes": {
             "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD1_0025",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
+          },
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD1_0026",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -7086,9 +7086,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "100-500",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7111,9 +7111,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7134,10 +7134,10 @@
           "member_id": "AUD1_0029",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -7159,10 +7159,10 @@
           "member_id": "AUD1_0030",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Income": "<50k",
+            "Employees in company": "100-500",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -7186,8 +7186,8 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -7212,8 +7212,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -7236,9 +7236,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7259,11 +7259,11 @@
           "member_id": "AUD1_0034",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 153,
@@ -7284,10 +7284,10 @@
           "member_id": "AUD1_0035",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -7312,8 +7312,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -7334,10 +7334,10 @@
           "member_id": "AUD1_0037",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -7361,9 +7361,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7387,7 +7387,7 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -7409,11 +7409,11 @@
           "member_id": "AUD1_0040",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 153,
@@ -7434,7 +7434,7 @@
           "member_id": "AUD1_0041",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -7459,7 +7459,7 @@
           "member_id": "AUD1_0042",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -7484,11 +7484,11 @@
           "member_id": "AUD1_0043",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7509,11 +7509,11 @@
           "member_id": "AUD1_0044",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 153,
@@ -7537,8 +7537,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Employees in company": "100-500",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -7559,11 +7559,11 @@
           "member_id": "AUD1_0046",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -7586,7 +7586,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
             "Job Title": "Director"
           },
@@ -7609,7 +7609,7 @@
           "member_id": "AUD1_0048",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -7659,10 +7659,10 @@
           "member_id": "AUD1_0050",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -7688,7 +7688,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -7709,7 +7709,7 @@
           "member_id": "AUD1_0052",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -7734,11 +7734,11 @@
           "member_id": "AUD1_0053",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 153,
@@ -7763,7 +7763,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -7788,7 +7788,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7809,11 +7809,11 @@
           "member_id": "AUD1_0056",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7834,11 +7834,11 @@
           "member_id": "AUD1_0057",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -7863,7 +7863,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -7887,8 +7887,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Supervisor"
+            "Employees in company": "500-1000",
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 153,
@@ -7913,7 +7913,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -7937,8 +7937,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "1-100",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -7959,7 +7959,7 @@
           "member_id": "AUD1_0062",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
@@ -7986,9 +7986,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -8009,10 +8009,10 @@
           "member_id": "AUD1_0064",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -8037,8 +8037,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8059,9 +8059,9 @@
           "member_id": "AUD1_0066",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -8084,11 +8084,11 @@
           "member_id": "AUD1_0067",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8107,31 +8107,6 @@
         },
         {
           "member_id": "AUD1_0068",
-          "audience_index": 1,
-          "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "C-Level"
-          },
-          "persona_template": {
-            "id": 153,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD1_0069",
           "audience_index": 1,
           "attributes": {
             "Age Group": "female",
@@ -8156,14 +8131,39 @@
           }
         },
         {
+          "member_id": "AUD1_0069",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "male",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
+          },
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
           "member_id": "AUD1_0070",
           "audience_index": 1,
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8184,11 +8184,11 @@
           "member_id": "AUD1_0071",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Employees in company": "100-500",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -8213,7 +8213,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -8238,7 +8238,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -8262,8 +8262,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -8287,8 +8287,8 @@
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8309,11 +8309,11 @@
           "member_id": "AUD1_0076",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8337,7 +8337,7 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
-            "Employees in company": "100-500",
+            "Employees in company": "500-1000",
             "Job Title": "Director"
           },
           "persona_template": {
@@ -8363,7 +8363,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -8384,11 +8384,11 @@
           "member_id": "AUD1_0079",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -8412,8 +8412,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "100-500",
-            "Job Title": "VP"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8436,9 +8436,9 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "Supervisor"
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -8459,11 +8459,11 @@
           "member_id": "AUD1_0082",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -8484,11 +8484,11 @@
           "member_id": "AUD1_0083",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -8509,11 +8509,11 @@
           "member_id": "AUD1_0084",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "VP"
           },
           "persona_template": {
             "id": 153,
@@ -8536,9 +8536,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
+            "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8561,9 +8561,9 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -8587,7 +8587,7 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
+            "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -8611,7 +8611,7 @@
           "attributes": {
             "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
@@ -8634,11 +8634,11 @@
           "member_id": "AUD1_0089",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "female",
+            "Age Group": "male",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "1-100",
-            "Job Title": "Director"
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8663,31 +8663,6 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
-          },
-          "persona_template": {
-            "id": 153,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD1_0091",
-          "audience_index": 1,
-          "attributes": {
-            "Age Group": "female",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
-            "Employees in company": "500-1000",
             "Job Title": "Supervisor"
           },
           "persona_template": {
@@ -8706,7 +8681,7 @@
           }
         },
         {
-          "member_id": "AUD1_0092",
+          "member_id": "AUD1_0091",
           "audience_index": 1,
           "attributes": {
             "Age Group": "male",
@@ -8731,7 +8706,57 @@
           }
         },
         {
+          "member_id": "AUD1_0092",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": ">50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Supervisor"
+          },
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
           "member_id": "AUD1_0093",
+          "audience_index": 1,
+          "attributes": {
+            "Age Group": "female",
+            "Age Group_option": "Old Millennials (36-45)",
+            "Income": "<50k",
+            "Employees in company": "500-1000",
+            "Job Title": "Director"
+          },
+          "persona_template": {
+            "id": 153,
+            "name": "Ritvik Kapoor",
+            "type": "Urban Gen Z Content Creator",
+            "base_gender": "Male",
+            "base_age": 23,
+            "location": "Bandra, Mumbai",
+            "ethnicity": "Indian",
+            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
+            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
+            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
+            "need_state": "Expressive and ambitious",
+            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
+          }
+        },
+        {
+          "member_id": "AUD1_0094",
           "audience_index": 1,
           "attributes": {
             "Age Group": "male",
@@ -8756,39 +8781,14 @@
           }
         },
         {
-          "member_id": "AUD1_0094",
+          "member_id": "AUD1_0095",
           "audience_index": 1,
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "500-1000",
-            "Job Title": "VP"
-          },
-          "persona_template": {
-            "id": 153,
-            "name": "Ritvik Kapoor",
-            "type": "Urban Gen Z Content Creator",
-            "base_gender": "Male",
-            "base_age": 23,
-            "location": "Bandra, Mumbai",
-            "ethnicity": "Indian",
-            "about": "Ritvik Kapoor, a 23-year-old Gen Z YouTuber, is carving out a niche as a content creator focusing on the vibrant city life of Mumbai. With primary education as his academic background, he has leaned heavily on his creativity and adventurous spirit to make his mark. Ritvik resides in Bandra, a culturally rich suburb of Mumbai known for its blend of urban and coastal lifestyles. Despite his minimalist approach to life, he’s deeply invested in creating stories that resonate with urban audiences. Ritvik earns around ₹750,000 to ₹990,000 annually through YouTube partnerships and collaborations, reflecting his growing influence as an early adopter in the digital content space.",
-            "goals_and_motivations": "To create impactful content that portrays authentic urban life experiences, To gain a loyal subscriber base that values creativity and storytelling, To explore sustainable living and integrate these themes into his YouTube content, To become a recognized and monetarily stable content creator while staying true to his minimalist lifestyle.",
-            "frustrations": "The competitive nature of YouTube and the challenge of standing out, Balancing creative independence with monetization, Limited time and resources for professional gear, Navigating algorithm changes affecting video visibility.",
-            "need_state": "Expressive and ambitious",
-            "occasions": "Consumes competitor content to stay updated or creates and uploads content on weekdays and weekends"
-          }
-        },
-        {
-          "member_id": "AUD1_0095",
-          "audience_index": 1,
-          "attributes": {
-            "Age Group": "male",
-            "Age Group_option": "Old Millennials (36-45)",
-            "Income": "<50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Supervisor"
+            "Job Title": "C-Level"
           },
           "persona_template": {
             "id": 153,
@@ -8811,7 +8811,7 @@
           "attributes": {
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
-            "Income": ">50k",
+            "Income": "<50k",
             "Employees in company": "100-500",
             "Job Title": "Supervisor"
           },
@@ -8837,8 +8837,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "C-Level"
+            "Employees in company": "1-100",
+            "Job Title": "Director"
           },
           "persona_template": {
             "id": 153,
@@ -8862,8 +8862,8 @@
             "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
-            "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Employees in company": "100-500",
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8884,11 +8884,11 @@
           "member_id": "AUD1_0099",
           "audience_index": 1,
           "attributes": {
-            "Age Group": "male",
+            "Age Group": "female",
             "Age Group_option": "Old Millennials (36-45)",
             "Income": "<50k",
             "Employees in company": "500-1000",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
@@ -8913,7 +8913,7 @@
             "Age Group_option": "Old Millennials (36-45)",
             "Income": ">50k",
             "Employees in company": "100-500",
-            "Job Title": "Director"
+            "Job Title": "Supervisor"
           },
           "persona_template": {
             "id": 153,
