@@ -82,12 +82,25 @@ def create_generation_prompt(member: dict[str, Any]) -> str:
     Create the generation prompt for a single audience member.
 
     Args:
-        member: Audience member dictionary with attributes and persona_template
+        member: Audience member dictionary with attributes, persona_template, and screener_responses
 
     Returns:
         Formatted prompt string for characteristic generation
     """
     persona = member.get("persona_template", {})
+    screener_responses = member.get("screener_responses", [])
+
+    # Format screener Q&A
+    screener_section = ""
+    if screener_responses:
+        screener_lines = []
+        for response in screener_responses:
+            question = response.get("question", "N/A")
+            answer = response.get("answer", "N/A")
+            screener_lines.append(f"- **Q**: {question}\n  **A**: {answer}")
+        screener_section = "\n".join(screener_lines)
+    else:
+        screener_section = "No screener responses available."
 
     prompt = f"""Generate a detailed audience member profile for the following persona:
 
@@ -98,21 +111,16 @@ def create_generation_prompt(member: dict[str, Any]) -> str:
 - **Need State**: {persona.get('need_state', 'N/A')}
 - **Occasions**: {persona.get('occasions', 'N/A')}
 
-Above information is enough to understand persona's traits and behavior. But you have to use audience initially provided attributes to generate a complete, realistic audience member profile as JSON.
+Above information is enough to understand persona's traits and behavior. Use the screener responses below to create variations and generate a complete, realistic audience member profile as JSON.
 
-## Audience Attributes
-- **Age Group**: {member.get('attributes', {}).get('Age Group', 'N/A')}
-- **Income**: {member.get('attributes', {}).get('Income', 'N/A')}
-- **Employees in company**: {member.get('attributes', {}).get('Employees in company', 'N/A')}
-- **Job Title**: {member.get('attributes', {}).get('Job Title', 'N/A')}
+## Screener Responses
+{screener_section}
 
 ## Important Guidelines
-1. The generated name should be culturally appropriate for the ethnicity
-2. Age must fall within the specified age group range
-3. Gender must match the 'Age Group' attribute (male/female) if specified
-4. Job title/occupation must align with the 'Job Title' attribute
-5. Income level should influence lifestyle descriptions
-6. Company size should influence work environment descriptions
+1. Use the screener responses to inform lifestyle, work environment, and behavioral descriptions
+2. Ensure the generated profile is consistent with the screener answers
+3. The profile should feel like a real person, not a stereotype
+4. Maintain the spirit of the base persona while adapting to the screener context
 
 Generate a complete, realistic audience member profile as JSON."""
 
