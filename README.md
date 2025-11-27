@@ -1,7 +1,5 @@
 # synth-aud-gen
 
-
-
 Does duplications of slots happens compulasary?
 
 Yes, duplications happen when the sample size exceeds the number of unique attribute combinations.
@@ -22,3 +20,6 @@ Yes, duplications happen when the sample size exceeds the number of unique attri
 * **No** , if `sample_size ≤ unique_combinations` (each slot would be unique)
 
 In your case with 48 combinations and 250/100 sample sizes, duplication is unavoidable to match the sample size.
+
+
+python generate_audience_characteristics.py -i data/personas_input_10.json -o data/audience_output_10.json

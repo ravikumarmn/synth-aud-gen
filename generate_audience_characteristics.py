@@ -302,27 +302,58 @@ def generate_member_characteristics(
     return None
 
 
-def convert_slots_to_members(persona_data: dict[str, Any]) -> list[dict[str, Any]]:
+def convert_persona_to_template(persona: dict[str, Any]) -> dict[str, Any]:
     """
-    Convert attribute slots to member format expected by generation functions.
+    Convert persona object from input format to persona_template format.
 
     Args:
-        persona_data: Persona dictionary with persona_template and attributes list
+        persona: Persona object with fields like personaName, about, etc.
+
+    Returns:
+        Persona template dictionary with standardized field names
+    """
+    return {
+        "id": persona.get("id"),
+        "name": persona.get("personaName", ""),
+        "type": persona.get("personaType", ""),
+        "gender": persona.get("gender", ""),
+        "age": persona.get("age"),
+        "location": persona.get("location", ""),
+        "ethnicity": persona.get("ethnicity", ""),
+        "about": persona.get("about", ""),
+        "goals_and_motivations": persona.get("goalsAndMotivations", ""),
+        "frustrations": persona.get("frustrations", ""),
+        "need_state": persona.get("needState", ""),
+        "occasions": persona.get("occasions", ""),
+    }
+
+
+def convert_audience_to_members(
+    audience_data: dict[str, Any], audience_index: int
+) -> list[dict[str, Any]]:
+    """
+    Convert audience data to member format expected by generation functions.
+
+    Args:
+        audience_data: Audience dictionary with persona, screenerQuestions, and sampleSize
+        audience_index: Index of this audience in the input
 
     Returns:
         List of member dictionaries ready for characteristic generation
     """
-    persona_template = persona_data.get("persona_template", {})
-    attributes_list = persona_data.get("attributes", [])
-    audience_index = persona_data.get("audience_index", 0)
+    persona = audience_data.get("persona", {})
+    persona_template = convert_persona_to_template(persona)
+    screener_questions = audience_data.get("screenerQuestions", [])
+    sample_size = audience_data.get("sampleSize", 1)
 
     members = []
-    for idx, attributes in enumerate(attributes_list):
+    for idx in range(sample_size):
         member = {
             "member_id": f"AUD{audience_index}_{idx + 1:04d}",
             "audience_index": audience_index,
-            "attributes": attributes,
             "persona_template": persona_template,
+            "screener_responses": screener_questions,
+            "variables": audience_data.get("variables", []),
         }
         members.append(member)
 
@@ -332,18 +363,20 @@ def convert_slots_to_members(persona_data: dict[str, Any]) -> list[dict[str, Any
 def generate_audience_characteristics(
     primary_client: OpenAI | AzureOpenAI,
     primary_model: str,
-    persona_data: dict[str, Any],
+    audience_data: dict[str, Any],
+    audience_index: int,
     fallback_client: OpenAI | AzureOpenAI | None = None,
     fallback_model: str | None = None,
     max_workers: int = 5,
 ) -> dict[str, Any]:
     """
-    Generate characteristics for all members in a persona/audience.
+    Generate characteristics for all members in an audience.
 
     Args:
         primary_client: Primary LLM client (Azure OpenAI)
         primary_model: Primary model/deployment name
-        persona_data: Persona dictionary with persona_template and attributes
+        audience_data: Audience dictionary with persona, screenerQuestions, sampleSize
+        audience_index: Index of this audience
         fallback_client: Fallback LLM client (Gemini)
         fallback_model: Fallback model name
         max_workers: Maximum number of concurrent API calls
@@ -351,9 +384,8 @@ def generate_audience_characteristics(
     Returns:
         Dictionary with audience info and generated characteristics
     """
-    # Convert slots to members format
-    members = convert_slots_to_members(persona_data)
-    audience_index = persona_data.get("audience_index", 0)
+    # Convert audience to members format
+    members = convert_audience_to_members(audience_data, audience_index)
 
     print(
         f"\nGenerating characteristics for Audience {audience_index} "
@@ -408,11 +440,13 @@ def generate_audience_characteristics(
     if failed_members:
         print(f"  Failed to generate for: {', '.join(failed_members)}")
 
+    persona = audience_data.get("persona", {})
     return {
         "audience_index": audience_index,
-        "sample_size": persona_data.get("sample_size", 0),
-        "total_slots": persona_data.get("total_slots", 0),
-        "persona_template": persona_data.get("persona_template", {}),
+        "sample_size": audience_data.get("sampleSize", 0),
+        "persona_template": convert_persona_to_template(persona),
+        "screener_questions": audience_data.get("screenerQuestions", []),
+        "variables": audience_data.get("variables", []),
         "members": generated_members,
         "generation_stats": {
             "total_members": len(members),
@@ -468,26 +502,25 @@ def run_generation(
     elif primary_provider == PROVIDER_GEMINI:
         print("Fallback provider: None (Gemini is primary)")
 
-    # Load input data (attribute_slots.json format)
+    # Load input data (personas_input format with audiences array)
     with open(input_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Calculate total slots across all personas
-    total_slots = data.get(
-        "total_slots", sum(p.get("total_slots", 0) for p in data.get("personas", []))
-    )
+    audiences = data.get("audiences", [])
+    total_samples = sum(aud.get("sampleSize", 0) for aud in audiences)
 
-    print(f"Loaded {data.get('total_audiences', 0)} audiences from {input_path}")
-    print(f"Total slots to process: {total_slots}")
+    print(f"Loaded {len(audiences)} audiences from {input_path}")
+    print(f"Total samples to generate: {total_samples}")
 
-    # Generate characteristics for each persona
+    # Generate characteristics for each audience
     enriched_audiences: list[dict[str, Any]] = []
 
-    for persona_data in data.get("personas", []):
+    for idx, audience_data in enumerate(audiences):
         enriched_audience = generate_audience_characteristics(
             primary_client,
             primary_model,
-            persona_data,
+            audience_data,
+            idx,
             fallback_client,
             fallback_model,
             max_workers,
@@ -505,11 +538,11 @@ def run_generation(
         model_info += f" (fallback: gemini:{fallback_model})"
 
     results = {
-        "project_name": data.get("project_name"),
-        "project_description": data.get("project_description"),
-        "project_id": data.get("project_id"),
-        "user_id": data.get("user_id"),
-        "request_id": data.get("request_id"),
+        "project_name": data.get("projectName"),
+        "project_description": data.get("projectDescription"),
+        "project_id": data.get("projectId"),
+        "user_id": data.get("userId"),
+        "request_id": data.get("requestId"),
         "generation_model": model_info,
         "primary_provider": primary_provider,
         "fallback_provider": PROVIDER_GEMINI if fallback_client else None,
