@@ -2,11 +2,16 @@
 """
 Audience Characteristics Generator
 
-This script takes generated audience samples and enriches each member with
-detailed characteristics by using the persona template and member attributes
-as input to Gemini LLM.
+This script takes attribute slots (from attribute_slots.json) and generates
+detailed characteristics for each slot by using the persona template and
+slot attributes as input to Gemini LLM.
 
-For each audience member, it generates:
+Input: attribute_slots.json with structure:
+  - personas[]: Array of persona data
+    - persona_template: Base persona information
+    - attributes[]: Array of attribute combinations (slots)
+
+For each attribute slot, it generates:
 - about: Behavioral description (interests, digital habits, lifestyle)
 - goalsAndMotivations: List of achievement/growth/impact goals
 - frustrations: List of process/quality/access challenges
@@ -192,26 +197,54 @@ def generate_member_characteristics(
     return None
 
 
+def convert_slots_to_members(persona_data: dict[str, Any]) -> list[dict[str, Any]]:
+    """
+    Convert attribute slots to member format expected by generation functions.
+
+    Args:
+        persona_data: Persona dictionary with persona_template and attributes list
+
+    Returns:
+        List of member dictionaries ready for characteristic generation
+    """
+    persona_template = persona_data.get("persona_template", {})
+    attributes_list = persona_data.get("attributes", [])
+    audience_index = persona_data.get("audience_index", 0)
+
+    members = []
+    for idx, attributes in enumerate(attributes_list):
+        member = {
+            "member_id": f"AUD{audience_index}_{idx + 1:04d}",
+            "audience_index": audience_index,
+            "attributes": attributes,
+            "persona_template": persona_template,
+        }
+        members.append(member)
+
+    return members
+
+
 def generate_audience_characteristics(
     client: OpenAI,
-    audience: dict[str, Any],
+    persona_data: dict[str, Any],
     model: str = "gemini-2.5-flash",
     max_workers: int = 5,
 ) -> dict[str, Any]:
     """
-    Generate characteristics for all members in an audience.
+    Generate characteristics for all members in a persona/audience.
 
     Args:
         client: OpenAI client configured for Gemini
-        audience: Audience dictionary with members
+        persona_data: Persona dictionary with persona_template and attributes
         model: Model name to use
         max_workers: Maximum number of concurrent API calls
 
     Returns:
         Dictionary with audience info and generated characteristics
     """
-    members = audience.get("members", [])
-    audience_index = audience.get("audience_index", 0)
+    # Convert slots to members format
+    members = convert_slots_to_members(persona_data)
+    audience_index = persona_data.get("audience_index", 0)
 
     print(
         f"\nGenerating characteristics for Audience {audience_index} "
@@ -265,9 +298,9 @@ def generate_audience_characteristics(
 
     return {
         "audience_index": audience_index,
-        "sample_size": audience.get("sample_size", 0),
-        "has_quota": audience.get("has_quota", False),
-        "variable_summary": audience.get("variable_summary", []),
+        "sample_size": persona_data.get("sample_size", 0),
+        "total_slots": persona_data.get("total_slots", 0),
+        "persona_template": persona_data.get("persona_template", {}),
         "members": generated_members,
         "generation_stats": {
             "total_members": len(members),
@@ -308,19 +341,24 @@ def run_generation(
         base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
     )
 
-    # Load input data
+    # Load input data (attribute_slots.json format)
     with open(input_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    print(f"Loaded {data.get('total_audiences', 0)} audiences from {input_path}")
-    print(f"Total members to process: {data.get('total_members_generated', 0)}")
+    # Calculate total slots across all personas
+    total_slots = data.get(
+        "total_slots", sum(p.get("total_slots", 0) for p in data.get("personas", []))
+    )
 
-    # Generate characteristics for each audience
+    print(f"Loaded {data.get('total_audiences', 0)} audiences from {input_path}")
+    print(f"Total slots to process: {total_slots}")
+
+    # Generate characteristics for each persona
     enriched_audiences: list[dict[str, Any]] = []
 
-    for audience in data.get("audiences", []):
+    for persona_data in data.get("personas", []):
         enriched_audience = generate_audience_characteristics(
-            client, audience, model, max_workers
+            client, persona_data, model, max_workers
         )
         enriched_audiences.append(enriched_audience)
 
@@ -397,8 +435,8 @@ def main() -> None:
         "-i",
         "--input",
         type=Path,
-        default=Path("data/audience_samples_small.json"),
-        help="Path to audience samples JSON file (default: data/audience_samples_small.json)",
+        default=Path("data/attribute_slots.json"),
+        help="Path to attribute slots JSON file (default: data/attribute_slots.json)",
     )
     parser.add_argument(
         "-o",

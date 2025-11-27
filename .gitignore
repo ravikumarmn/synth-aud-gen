@@ -1,2 +1,4 @@
 docs
 .windsurf
+.env
+__pycache__
