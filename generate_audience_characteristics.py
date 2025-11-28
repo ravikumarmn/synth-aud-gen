@@ -145,7 +145,7 @@ def _create_azure_client() -> tuple[AsyncAzureOpenAI, str]:
     """
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o")
+    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o-mini")
     api_version = os.getenv("OPENAI_API_VERSION", "2024-08-01-preview")
 
     if not api_key or not endpoint:
@@ -190,8 +190,9 @@ async def _call_llm(
             {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
             {"role": "user", "content": prompt},
         ],
-        temperature=0.8,
-        max_tokens=4096,
+        temperature=0.7,
+        max_tokens=2048,
+        response_format={"type": "json_object"},
     )
 
     if not response.choices:
@@ -622,8 +623,8 @@ def main() -> None:
     parser.add_argument(
         "--concurrent",
         type=int,
-        default=10,
-        help="Maximum concurrent API calls (default: 10)",
+        default=20,
+        help="Maximum concurrent API calls (default: 20)",
     )
 
     args = parser.parse_args()
