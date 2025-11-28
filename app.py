@@ -16,6 +16,7 @@ from pydantic import BaseModel, Field
 from generate_audience_characteristics import (
     _create_azure_client,
     generate_audience_characteristics,
+    _parse_llm_response,
 )
 
 app = FastAPI(

@@ -2,3 +2,4 @@ docs
 .windsurf
 .env
 __pycache__
+tests

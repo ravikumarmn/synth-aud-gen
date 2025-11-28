@@ -214,12 +214,34 @@ def _parse_llm_response(
     Returns:
         GeneratedCharacteristics object
     """
-    # Handle potential markdown code blocks
-    if content.startswith("```"):
-        content = content.split("```")[1]
-        if content.startswith("json"):
-            content = content[4:]
-        content = content.strip()
+    # Strip whitespace
+    content = content.strip()
+
+    # Handle markdown code blocks (```json ... ``` or ``` ... ```)
+    if "```" in content:
+        # Extract content between first ``` and last ```
+        parts = content.split("```")
+        if len(parts) >= 3:
+            # Content is between first and second ```
+            code_block = parts[1]
+            # Remove language identifier if present (e.g., "json\n")
+            if code_block.startswith("json"):
+                code_block = code_block[4:]
+            content = code_block.strip()
+        elif len(parts) == 2:
+            # Only opening ``` found, take content after it
+            code_block = parts[1]
+            if code_block.startswith("json"):
+                code_block = code_block[4:]
+            content = code_block.strip()
+
+    # Try to extract JSON object if there's extra text around it
+    if not content.startswith("{"):
+        # Find the first { and last }
+        start_idx = content.find("{")
+        end_idx = content.rfind("}")
+        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+            content = content[start_idx : end_idx + 1]
 
     result_data = json.loads(content)
 
@@ -261,6 +283,9 @@ async def generate_member_characteristics(
 
         except json.JSONDecodeError as e:
             print(f"  JSON parse error (attempt {attempt + 1}): {e}")
+            print(
+                f"    Raw content preview: {content[:200] if content else 'empty'}..."
+            )
             if attempt < max_retries - 1:
                 await asyncio.sleep(1)
         except Exception as e:

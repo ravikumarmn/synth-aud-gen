@@ -32,7 +32,7 @@ curl -X POST "http://localhost:8000/generate/file?max_concurrent=10"
 curl -X POST "http://localhost:8000/generate/file?max_concurrent=10" -F "file=@data/personas_input_10.json"
 
 curl -X POST "http://localhost:8000/generate/file?max_concurrent=10"
-  -F "file=@data/personas_input_10.json"
+  -F "file=@personas_input_10.json"
 
 ## Without File
 
