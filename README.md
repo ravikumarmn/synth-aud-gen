@@ -23,7 +23,6 @@ In your case with 48 combinations and 250/100 sample sizes, duplication is unavo
 
 python generate_audience_characteristics.py -i data/personas_input_10.json -o data/audience_output_10.json
 
-
 ## With File:
 
 curl -X POST "http://localhost:8000/generate/file?max_concurrent=10"
@@ -59,14 +58,15 @@ Upload generated audience characteristics to Azure Blob Storage and update the p
 ### Setup
 
 1. Set environment variables (see `.env.example`):
+
    ```bash
    export AZURE_STORAGE_ACCOUNT_NAME=your-storage-account
    export AZURE_STORAGE_ACCOUNT_KEY=your-storage-key
    export AZURE_STORAGE_CONTAINER_NAME=audience-characteristics
    export MIDDLEWARE_API_URL=https://sample-agument-middleware-dev.azurewebsites.net
    ```
-
 2. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
@@ -85,6 +85,14 @@ python azure_blob_storage.py data/audience_characteristics_small.json 28 \
   --container my-container \
   --expiry-days 180
 ```
+
+#### curl -X POST "http://localhost:8000/generate_audience"
+
+  -H "Content-Type: application/json"
+  -d '{
+    "input_blob_url": "https://syncbillblob.blob.core.windows.net/samplefiles/digital_persona_output_10.json",
+    "max_concurrent": 10
+  }'
 
 #### Python API
 
