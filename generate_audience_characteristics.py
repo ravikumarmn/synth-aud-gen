@@ -144,7 +144,7 @@ def _create_azure_client() -> tuple[AzureOpenAI, str]:
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
     deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o")
-    api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-08-01-preview")
+    api_version = os.getenv("OPENAI_API_VERSION", "2024-08-01-preview")
 
     if not api_key or not endpoint:
         raise ValueError(
@@ -152,7 +152,7 @@ def _create_azure_client() -> tuple[AzureOpenAI, str]:
             "  - AZURE_OPENAI_API_KEY\n"
             "  - AZURE_OPENAI_ENDPOINT\n"
             "  - AZURE_OPENAI_DEPLOYMENT_NAME (optional, defaults to gpt-4o)\n"
-            "  - AZURE_OPENAI_API_VERSION (optional)"
+            "  - OPENAI_API_VERSION (optional)"
         )
 
     client = AzureOpenAI(
@@ -322,7 +322,6 @@ def convert_audience_to_members(
             "audience_index": audience_index,
             "persona_template": persona_template,
             "screener_responses": screener_questions,
-            "variables": audience_data.get("variables", []),
         }
         members.append(member)
 
@@ -347,7 +346,7 @@ def generate_audience_characteristics(
         max_workers: Maximum number of concurrent API calls
 
     Returns:
-        Dictionary with audience info and generated characteristics
+        Dictionary with generated_audience and metadata sections
     """
     # Convert audience to members format
     members = convert_audience_to_members(audience_data, audience_index)
@@ -357,7 +356,7 @@ def generate_audience_characteristics(
         f"({len(members)} members) with {max_workers} workers..."
     )
 
-    generated_members: list[dict[str, Any]] = []
+    generated_audience: list[dict[str, Any]] = []
     failed_members: list[str] = []
 
     def generate_with_index(
@@ -381,40 +380,44 @@ def generate_audience_characteristics(
             print(f"  [{completed}/{len(members)}] Generated: {member_id}")
 
             if result:
-                # Combine original member data with generated characteristics
-                enriched_member = {
-                    **original_member,
-                    "generated_characteristics": asdict(result),
+                # Store only the generated characteristics with member_id
+                audience_member = {
+                    "member_id": member_id,
+                    "about": result.about,
+                    "goals_and_motivations": result.goals_and_motivations,
+                    "frustrations": result.frustrations,
+                    "need_state": result.need_state,
+                    "occasions": result.occasions,
                 }
-                generated_members.append(enriched_member)
+                generated_audience.append(audience_member)
             else:
-                # Keep original member even if generation failed
-                enriched_member = {
-                    **original_member,
-                    "generated_characteristics": None,
+                # Keep member with error indication
+                audience_member = {
+                    "member_id": member_id,
                     "generation_error": "Failed to generate characteristics",
                 }
-                generated_members.append(enriched_member)
+                generated_audience.append(audience_member)
                 failed_members.append(member_id)
 
     # Sort by member_id to maintain order
-    generated_members.sort(key=lambda m: m.get("member_id", ""))
+    generated_audience.sort(key=lambda m: m.get("member_id", ""))
 
     if failed_members:
         print(f"  Failed to generate for: {', '.join(failed_members)}")
 
     persona = audience_data.get("persona", {})
     return {
-        "audience_index": audience_index,
-        "sample_size": audience_data.get("sampleSize", 0),
-        "persona_template": convert_persona_to_template(persona),
-        "screener_questions": audience_data.get("screenerQuestions", []),
-        "variables": audience_data.get("variables", []),
-        "members": generated_members,
-        "generation_stats": {
-            "total_members": len(members),
-            "successfully_generated": len(members) - len(failed_members),
-            "failed": len(failed_members),
+        "generated_audience": generated_audience,
+        "metadata": {
+            "audience_index": audience_index,
+            "sample_size": audience_data.get("sampleSize", 0),
+            "persona": persona,
+            "screener_questions": audience_data.get("screenerQuestions", []),
+            "generation_stats": {
+                "total_members": len(members),
+                "successfully_generated": len(members) - len(failed_members),
+                "failed": len(failed_members),
+            },
         },
     }
 
@@ -465,9 +468,12 @@ def run_generation(
 
     # Compile results
     total_generated = sum(
-        aud["generation_stats"]["successfully_generated"] for aud in enriched_audiences
+        aud["metadata"]["generation_stats"]["successfully_generated"]
+        for aud in enriched_audiences
     )
-    total_failed = sum(aud["generation_stats"]["failed"] for aud in enriched_audiences)
+    total_failed = sum(
+        aud["metadata"]["generation_stats"]["failed"] for aud in enriched_audiences
+    )
 
     results = {
         "project_name": data.get("projectName"),
@@ -505,24 +511,25 @@ def print_summary(results: dict[str, Any]) -> None:
     print("-" * 60)
 
     for aud in results.get("audiences", []):
-        stats = aud.get("generation_stats", {})
-        print(f"\nAudience {aud['audience_index']}:")
+        metadata = aud.get("metadata", {})
+        stats = metadata.get("generation_stats", {})
+        print(f"\nAudience {metadata.get('audience_index')}:")
+        print(f"  Persona: {metadata.get('persona', {}).get('personaName', 'N/A')}")
         print(f"  Total Members: {stats.get('total_members', 0)}")
         print(f"  Generated: {stats.get('successfully_generated', 0)}")
         print(f"  Failed: {stats.get('failed', 0)}")
 
         # Show a sample generated member
-        members = aud.get("members", [])
-        for member in members:
-            chars = member.get("generated_characteristics")
-            if chars:
+        generated_audience = aud.get("generated_audience", [])
+        for member in generated_audience:
+            if "generation_error" not in member:
                 print(f"\n  Sample Generated Member ({member.get('member_id')}):")
-                about = chars.get("about", "")
+                about = member.get("about", "")
                 if len(about) > 150:
                     about = about[:150] + "..."
                 print(f"    About: {about}")
-                print(f"    Need State: {chars.get('need_state')}")
-                goals = chars.get("goals_and_motivations", [])
+                print(f"    Need State: {member.get('need_state')}")
+                goals = member.get("goals_and_motivations", [])
                 if goals:
                     print(f"    Goals: {goals[0]}...")
                 break
