@@ -60,6 +60,8 @@ Generate a realistic, believable individual that:
 - Has internally consistent traits and behaviors
 - Feels like a real person, not a stereotype
 
+IMPORTANT: Do NOT generate or include any personal names (first names, last names, or full names) anywhere in the output. Describe the person using general terms like "this individual", "they", or role-based descriptors instead.
+
 You MUST respond with valid JSON matching this exact schema:
 {GeneratedProfile.model_json_schema()}
 
@@ -125,6 +127,7 @@ Above information is enough to understand persona's traits and behavior. Use the
 2. Ensure the generated profile is consistent with the screener answers
 3. The profile should feel like a real person, not a stereotype
 4. Maintain the spirit of the base persona while adapting to the screener context
+5. Do NOT include any personal names—use descriptive terms like "this individual" or "they" instead
 
 Generate a complete, realistic audience member profile as JSON."""
 
