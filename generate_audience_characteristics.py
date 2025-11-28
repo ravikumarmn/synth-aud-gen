@@ -64,14 +64,19 @@ Generate a realistic, believable individual that:
 - Has internally consistent traits and behaviors
 - Feels like a real person, not a stereotype
 
-IMPORTANT: Generate a completely NEW and UNIQUE full name for this person. The name must be DIFFERENT from any name in the base persona template. Base the name on the persona's demographic background (location, ethnicity, gender) but ensure it is a fresh, distinct name—never copy or reuse the persona template's name.
+NAME GENERATION RULES:
+- Generate a completely RANDOM and UNIQUE full name for each person
+- NEVER repeat or reuse names across profiles—each name must be distinct
+- Use diverse first names and surnames—avoid common/overused names like "Ritvik", "Priya", "Sharma", "Nair"
+- Match the name to the persona's location, ethnicity, and gender
+- Be creative: draw from a wide variety of cultural naming conventions
 
 You MUST respond with valid JSON matching this exact schema:
 {GeneratedProfile.model_json_schema()}
 
 Example output:
 {{
-    "name": "Priya Sharma",
+    "name": "Kavitha Menon",
     "about": "A creative professional who thrives on innovation...",
     "goalsAndMotivations": [
         "To scale business operations while maintaining quality",
@@ -132,7 +137,7 @@ Above information is enough to understand persona's traits and behavior. Use the
 2. Ensure the generated profile is consistent with the screener answers
 3. The profile should feel like a real person, not a stereotype
 4. Maintain the spirit of the base persona while adapting to the screener context
-5. Generate a completely NEW full name that is DIFFERENT from the base persona's name—never copy or reuse it
+5. Generate a RANDOM, UNIQUE full name—avoid common names like "Ritvik", "Priya", "Sharma", "Nair". Be creative and diverse
 
 Generate a complete, realistic audience member profile as JSON."""
 
