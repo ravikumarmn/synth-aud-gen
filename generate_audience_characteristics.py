@@ -64,7 +64,7 @@ Generate a realistic, believable individual that:
 - Has internally consistent traits and behaviors
 - Feels like a real person, not a stereotype
 
-IMPORTANT: Generate a realistic full name for this person based on their demographic background (location, ethnicity, gender from the persona template). The name should feel authentic and culturally appropriate.
+IMPORTANT: Generate a completely NEW and UNIQUE full name for this person. The name must be DIFFERENT from any name in the base persona template. Base the name on the persona's demographic background (location, ethnicity, gender) but ensure it is a fresh, distinct name—never copy or reuse the persona template's name.
 
 You MUST respond with valid JSON matching this exact schema:
 {GeneratedProfile.model_json_schema()}
@@ -132,7 +132,7 @@ Above information is enough to understand persona's traits and behavior. Use the
 2. Ensure the generated profile is consistent with the screener answers
 3. The profile should feel like a real person, not a stereotype
 4. Maintain the spirit of the base persona while adapting to the screener context
-5. Generate a culturally appropriate full name based on the persona's location, ethnicity, and gender
+5. Generate a completely NEW full name that is DIFFERENT from the base persona's name—never copy or reuse it
 
 Generate a complete, realistic audience member profile as JSON."""
 
