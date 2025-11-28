@@ -189,6 +189,47 @@ async def _call_llm(
     return content.strip()
 
 
+def _fix_unescaped_quotes_in_strings(content: str) -> str:
+    """
+    Fix unescaped double quotes inside JSON string values.
+
+    LLMs sometimes produce JSON like:
+        {"about": "She said "hello" to him"}
+    which should be:
+        {"about": "She said \"hello\" to him"}
+    """
+    result = []
+    i = 0
+    in_string = False
+    string_start = -1
+
+    while i < len(content):
+        char = content[i]
+
+        if char == '"' and (i == 0 or content[i - 1] != "\\"):
+            if not in_string:
+                # Starting a string
+                in_string = True
+                string_start = i
+                result.append(char)
+            else:
+                # Check if this quote ends the string or is an unescaped internal quote
+                # Look ahead to see if this is followed by valid JSON structure
+                rest = content[i + 1 :].lstrip()
+                if rest and rest[0] in ":,}]" or not rest:
+                    # This quote ends the string
+                    in_string = False
+                    result.append(char)
+                else:
+                    # This is an unescaped quote inside the string - escape it
+                    result.append('\\"')
+        else:
+            result.append(char)
+        i += 1
+
+    return "".join(result)
+
+
 def _parse_llm_response(
     content: str, member: dict[str, Any]
 ) -> GeneratedCharacteristics:
@@ -235,12 +276,21 @@ def _parse_llm_response(
         # Replace single quotes with double quotes
         fixed_content = re.sub(r"(?<=[{,:\[])\s*'", ' "', fixed_content)
         fixed_content = re.sub(r"'\s*(?=[}\],:])", '"', fixed_content)
+        # Fix unescaped newlines in strings
+        fixed_content = re.sub(r"(?<!\\)\n", r"\\n", fixed_content)
 
         try:
             result_data = json.loads(fixed_content)
         except json.JSONDecodeError:
-            print(f"    Failed to parse JSON. Content:\n{content[:500]}")
-            raise first_error
+            # Try fixing unescaped quotes inside strings
+            fixed_content = _fix_unescaped_quotes_in_strings(content)
+            fixed_content = re.sub(r",\s*([}\]])", r"\1", fixed_content)
+            fixed_content = re.sub(r"(?<!\\)\n", r"\\n", fixed_content)
+            try:
+                result_data = json.loads(fixed_content)
+            except json.JSONDecodeError:
+                print(f"    Failed to parse JSON. Content:\n{content[:500]}")
+                raise first_error
 
     return GeneratedCharacteristics(
         member_id=member.get("member_id", "unknown"),
