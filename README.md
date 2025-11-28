@@ -21,5 +21,22 @@ Yes, duplications happen when the sample size exceeds the number of unique attri
 
 In your case with 48 combinations and 250/100 sample sizes, duplication is unavoidable to match the sample size.
 
-
 python generate_audience_characteristics.py -i data/personas_input_10.json -o data/audience_output_10.json
+
+
+
+curl -X POST http://localhost:8000/generate
+  -H "Content-Type: application/json"
+  -d '{
+    "projectName": "Test Project",
+    "audiences": [{
+      "persona": {
+        "personaName": "Tech Enthusiast",
+        "about": "Loves technology and gadgets"
+      },
+      "screenerQuestions": [
+        {"question": "Do you use smartphones?", "answer": "Yes, daily"}
+      ],
+      "sampleSize": 2
+    }]
+  }'
