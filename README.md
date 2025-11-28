@@ -51,3 +51,70 @@ curl -X POST http://localhost:8000/generate
       "sampleSize": 2
     }]
   }'
+
+## Azure Blob Storage Integration
+
+Upload generated audience characteristics to Azure Blob Storage and update the persona file URL via the middleware API.
+
+### Setup
+
+1. Set environment variables (see `.env.example`):
+   ```bash
+   export AZURE_STORAGE_ACCOUNT_NAME=your-storage-account
+   export AZURE_STORAGE_ACCOUNT_KEY=your-storage-key
+   export AZURE_STORAGE_CONTAINER_NAME=audience-characteristics
+   export MIDDLEWARE_API_URL=https://sample-agument-middleware-dev.azurewebsites.net
+   ```
+
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Usage
+
+#### Command Line
+
+```bash
+# Upload file and update persona URL
+python azure_blob_storage.py data/audience_characteristics_small.json 28
+
+# With custom options
+python azure_blob_storage.py data/audience_characteristics_small.json 28 \
+  --blob-name custom_name.json \
+  --container my-container \
+  --expiry-days 180
+```
+
+#### Python API
+
+```python
+from azure_blob_storage import (
+    AzureBlobStorageClient,
+    upload_and_update_persona,
+    update_persona_file_url,
+)
+
+# Full workflow: upload and update API
+result = upload_and_update_persona(
+    file_path="data/audience_characteristics_small.json",
+    project_id=28,
+)
+print(result)
+
+# Or use the client directly
+client = AzureBlobStorageClient()
+
+# Upload and get SAS URL
+upload_result = client.upload_and_get_sas_url(
+    file_path="data/audience_characteristics_small.json",
+    expiry_days=365,
+)
+print(upload_result["sas_url"])
+
+# Update persona URL via API
+api_result = update_persona_file_url(
+    project_id=28,
+    sas_url=upload_result["sas_url"],
+)
+```
