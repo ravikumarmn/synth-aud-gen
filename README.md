@@ -29,6 +29,9 @@ python generate_audience_characteristics.py -i data/personas_input_10.json -o da
 curl -X POST "http://localhost:8000/generate/file?max_concurrent=10"
   -F "file=@data/persona_input.json"
 
+curl -X POST "http://localhost:8000/generate/file?max_concurrent=10" -F "file=@data/personas_input_10.json"
+
+
 ## Without File
 
 curl -X POST http://localhost:8000/generate

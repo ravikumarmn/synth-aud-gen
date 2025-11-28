@@ -391,11 +391,15 @@ async def generate_from_file(
 
         await client.close()
 
+        # Convert IDs to strings if they exist (input may have int or string)
+        project_id = data.get("projectId")
+        user_id = data.get("userId")
+
         return GenerationResponse(
             project_name=data.get("projectName"),
             project_description=data.get("projectDescription"),
-            project_id=data.get("projectId"),
-            user_id=data.get("userId"),
+            project_id=str(project_id) if project_id is not None else None,
+            user_id=str(user_id) if user_id is not None else None,
             request_id=data.get("requestId"),
             generation_model=f"azure:{deployment}",
             provider="azure",
