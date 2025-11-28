@@ -1,7 +1,5 @@
 # Audience Sample Generator & Evaluator
 
 # Core dependencies
-openai>=1.0.0  # Used for Gemini API with OpenAI-compatible interface
-langchain-openai>=0.2.0  # Azure OpenAI via LangChain
-langchain-core>=0.3.0  # LangChain core utilities
+openai>=1.0.0  # Azure OpenAI SDK
 python-dotenv>=1.0.0  # Environment variable management

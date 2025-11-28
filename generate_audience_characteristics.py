@@ -2,16 +2,16 @@
 """
 Audience Characteristics Generator
 
-This script takes attribute slots (from attribute_slots.json) and generates
-detailed characteristics for each slot by using the persona template and
-slot attributes as input to Gemini LLM.
+This script generates detailed audience member characteristics using persona
+templates and screener questions as input to Azure OpenAI LLM.
 
-Input: attribute_slots.json with structure:
-  - personas[]: Array of persona data
-    - persona_template: Base persona information
-    - attributes[]: Array of attribute combinations (slots)
+Input: personas_input JSON with structure:
+  - audiences[]: Array of audience data
+    - persona: Base persona information
+    - screenerQuestions[]: Array of qualifying Q&A pairs
+    - sampleSize: Number of members to generate
 
-For each attribute slot, it generates:
+For each audience member, it generates:
 - about: Behavioral description (interests, digital habits, lifestyle)
 - goalsAndMotivations: List of achievement/growth/impact goals
 - frustrations: List of process/quality/access challenges
@@ -27,9 +27,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 from dataclasses import dataclass, asdict
-from openai import OpenAI
-from langchain_openai import AzureChatOpenAI
-from langchain_core.messages import SystemMessage, HumanMessage
+from openai import AzureOpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -37,7 +35,6 @@ load_dotenv()
 
 # Provider configuration
 PROVIDER_AZURE = "azure"
-PROVIDER_GEMINI = "gemini"
 
 
 @dataclass
@@ -134,61 +131,49 @@ Generate a complete, realistic audience member profile as JSON."""
     return prompt
 
 
-def _create_azure_client() -> tuple[AzureChatOpenAI, str] | None:
+def _create_azure_client() -> tuple[AzureOpenAI, str]:
     """
-    Create Azure OpenAI client using LangChain if credentials are available.
+    Create Azure OpenAI client.
 
     Returns:
-        Tuple of (client, model_name) or None if not configured
+        Tuple of (client, deployment_name)
+
+    Raises:
+        ValueError: If required environment variables are not set
     """
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
+    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o")
     api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-08-01-preview")
 
     if not api_key or not endpoint:
-        return None
+        raise ValueError(
+            "Azure OpenAI not configured. Set the following environment variables:\n"
+            "  - AZURE_OPENAI_API_KEY\n"
+            "  - AZURE_OPENAI_ENDPOINT\n"
+            "  - AZURE_OPENAI_DEPLOYMENT_NAME (optional, defaults to gpt-4o)\n"
+            "  - AZURE_OPENAI_API_VERSION (optional)"
+        )
 
-    client = AzureChatOpenAI(
+    client = AzureOpenAI(
         api_key=api_key,
         api_version=api_version,
         azure_endpoint=endpoint,
-        azure_deployment=deployment,
-        temperature=0.8,
-        max_tokens=4096,
     )
     return client, deployment
 
 
-def _create_gemini_client() -> tuple[OpenAI, str] | None:
-    """
-    Create Gemini client if credentials are available.
-
-    Returns:
-        Tuple of (client, model_name) or None if not configured
-    """
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key:
-        return None
-
-    client = OpenAI(
-        api_key=api_key,
-        base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-    )
-    return client, "gemini-2.5-flash"
-
-
 def _call_llm(
-    client: OpenAI | AzureChatOpenAI,
-    model: str,
+    client: AzureOpenAI,
+    deployment: str,
     prompt: str,
 ) -> str:
     """
     Make an LLM API call and return the response content.
 
     Args:
-        client: OpenAI or AzureChatOpenAI client
-        model: Model/deployment name
+        client: AzureOpenAI client
+        deployment: Azure deployment name
         prompt: User prompt
 
     Returns:
@@ -197,21 +182,8 @@ def _call_llm(
     Raises:
         ValueError: If API returns no content
     """
-    # Use LangChain interface for AzureChatOpenAI
-    if isinstance(client, AzureChatOpenAI):
-        messages = [
-            SystemMessage(content=GENERATION_SYSTEM_PROMPT),
-            HumanMessage(content=prompt),
-        ]
-        response = client.invoke(messages)
-        content = response.content
-        if not content:
-            raise ValueError("API returned empty content")
-        return content.strip()
-
-    # Use OpenAI SDK interface for Gemini
     response = client.chat.completions.create(
-        model=model,
+        model=deployment,
         messages=[
             {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
             {"role": "user", "content": prompt},
@@ -223,15 +195,9 @@ def _call_llm(
     if not response.choices:
         raise ValueError("API returned no choices")
 
-    message = response.choices[0].message
-    content = message.content
-
-    if content is None:
-        content = getattr(message, "text", None)
-    if content is None:
-        finish_reason = response.choices[0].finish_reason
-        raise ValueError(f"API returned empty content (finish_reason: {finish_reason})")
-
+    content = response.choices[0].message.content
+    if not content:
+        raise ValueError("API returned empty content")
     return content.strip()
 
 
@@ -269,53 +235,38 @@ def _parse_llm_response(
 
 
 def generate_member_characteristics(
-    primary_client: OpenAI | AzureChatOpenAI,
-    primary_model: str,
+    client: AzureOpenAI,
+    deployment: str,
     member: dict[str, Any],
-    fallback_client: OpenAI | AzureChatOpenAI | None = None,
-    fallback_model: str | None = None,
     max_retries: int = 3,
 ) -> GeneratedCharacteristics | None:
     """
-    Generate characteristics for a single audience member using the LLM.
-    Uses primary provider first, falls back to secondary on failure.
+    Generate characteristics for a single audience member using Azure OpenAI.
 
     Args:
-        primary_client: Primary LLM client (Azure OpenAI)
-        primary_model: Primary model/deployment name
+        client: AzureOpenAI client
+        deployment: Azure deployment name
         member: Audience member to generate characteristics for
-        fallback_client: Fallback LLM client (Gemini)
-        fallback_model: Fallback model name
-        max_retries: Number of retries per provider
+        max_retries: Number of retries on failure
 
     Returns:
-        GeneratedCharacteristics or None if all providers fail
+        GeneratedCharacteristics or None if all retries fail
     """
     prompt = create_generation_prompt(member)
-    providers = [(primary_client, primary_model, "primary")]
-    if fallback_client and fallback_model:
-        providers.append((fallback_client, fallback_model, "fallback"))
 
-    for client, model, provider_name in providers:
-        for attempt in range(max_retries):
-            try:
-                content = _call_llm(client, model, prompt)
-                return _parse_llm_response(content, member)
+    for attempt in range(max_retries):
+        try:
+            content = _call_llm(client, deployment, prompt)
+            return _parse_llm_response(content, member)
 
-            except json.JSONDecodeError as e:
-                print(
-                    f"  JSON parse error ({provider_name}, attempt {attempt + 1}): {e}"
-                )
-                if attempt < max_retries - 1:
-                    time.sleep(1)
-            except Exception as e:
-                print(f"  API error ({provider_name}, attempt {attempt + 1}): {e}")
-                if attempt < max_retries - 1:
-                    time.sleep(2)
-
-        # If primary exhausted retries, try fallback
-        if provider_name == "primary" and fallback_client:
-            print(f"  Primary provider failed, switching to fallback...")
+        except json.JSONDecodeError as e:
+            print(f"  JSON parse error (attempt {attempt + 1}): {e}")
+            if attempt < max_retries - 1:
+                time.sleep(1)
+        except Exception as e:
+            print(f"  API error (attempt {attempt + 1}): {e}")
+            if attempt < max_retries - 1:
+                time.sleep(2)
 
     return None
 
@@ -379,24 +330,20 @@ def convert_audience_to_members(
 
 
 def generate_audience_characteristics(
-    primary_client: OpenAI | AzureChatOpenAI,
-    primary_model: str,
+    client: AzureOpenAI,
+    deployment: str,
     audience_data: dict[str, Any],
     audience_index: int,
-    fallback_client: OpenAI | AzureChatOpenAI | None = None,
-    fallback_model: str | None = None,
     max_workers: int = 5,
 ) -> dict[str, Any]:
     """
     Generate characteristics for all members in an audience.
 
     Args:
-        primary_client: Primary LLM client (Azure OpenAI)
-        primary_model: Primary model/deployment name
+        client: AzureOpenAI client
+        deployment: Azure deployment name
         audience_data: Audience dictionary with persona, screenerQuestions, sampleSize
         audience_index: Index of this audience
-        fallback_client: Fallback LLM client (Gemini)
-        fallback_model: Fallback model name
         max_workers: Maximum number of concurrent API calls
 
     Returns:
@@ -417,9 +364,7 @@ def generate_audience_characteristics(
         args: tuple[int, dict],
     ) -> tuple[int, GeneratedCharacteristics | None, dict]:
         idx, member = args
-        result = generate_member_characteristics(
-            primary_client, primary_model, member, fallback_client, fallback_model
-        )
+        result = generate_member_characteristics(client, deployment, member)
         return idx, result, member
 
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
@@ -481,7 +426,7 @@ def run_generation(
 ) -> dict[str, Any]:
     """
     Run characteristic generation on all audiences in the input file.
-    Uses Azure OpenAI as primary provider and Gemini as fallback.
+    Uses Azure OpenAI.
 
     Args:
         input_path: Path to audience samples JSON file
@@ -491,34 +436,9 @@ def run_generation(
     Returns:
         Complete results dictionary with generated characteristics
     """
-    # Initialize primary client (Azure OpenAI)
-    azure_result = _create_azure_client()
-    gemini_result = _create_gemini_client()
-
-    if azure_result:
-        primary_client, primary_model = azure_result
-        primary_provider = PROVIDER_AZURE
-        print(f"Primary provider: Azure OpenAI (deployment: {primary_model})")
-    elif gemini_result:
-        # Fall back to Gemini as primary if Azure not configured
-        primary_client, primary_model = gemini_result
-        primary_provider = PROVIDER_GEMINI
-        print(f"Primary provider: Gemini (model: {primary_model})")
-    else:
-        raise ValueError(
-            "No LLM provider configured. Set either:\n"
-            "  - AZURE_OPENAI_API_KEY and AZURE_OPENAI_ENDPOINT for Azure OpenAI\n"
-            "  - GEMINI_API_KEY for Gemini"
-        )
-
-    # Initialize fallback client (Gemini if Azure is primary)
-    fallback_client = None
-    fallback_model = None
-    if primary_provider == PROVIDER_AZURE and gemini_result:
-        fallback_client, fallback_model = gemini_result
-        print(f"Fallback provider: Gemini (model: {fallback_model})")
-    elif primary_provider == PROVIDER_GEMINI:
-        print("Fallback provider: None (Gemini is primary)")
+    # Initialize Azure OpenAI client
+    client, deployment = _create_azure_client()
+    print(f"Provider: Azure OpenAI (deployment: {deployment})")
 
     # Load input data (personas_input format with audiences array)
     with open(input_path, "r", encoding="utf-8") as f:
@@ -535,12 +455,10 @@ def run_generation(
 
     for idx, audience_data in enumerate(audiences):
         enriched_audience = generate_audience_characteristics(
-            primary_client,
-            primary_model,
+            client,
+            deployment,
             audience_data,
             idx,
-            fallback_client,
-            fallback_model,
             max_workers,
         )
         enriched_audiences.append(enriched_audience)
@@ -551,19 +469,14 @@ def run_generation(
     )
     total_failed = sum(aud["generation_stats"]["failed"] for aud in enriched_audiences)
 
-    model_info = f"{primary_provider}:{primary_model}"
-    if fallback_model:
-        model_info += f" (fallback: gemini:{fallback_model})"
-
     results = {
         "project_name": data.get("projectName"),
         "project_description": data.get("projectDescription"),
         "project_id": data.get("projectId"),
         "user_id": data.get("userId"),
         "request_id": data.get("requestId"),
-        "generation_model": model_info,
-        "primary_provider": primary_provider,
-        "fallback_provider": PROVIDER_GEMINI if fallback_client else None,
+        "generation_model": f"{PROVIDER_AZURE}:{deployment}",
+        "provider": PROVIDER_AZURE,
         "total_audiences": len(enriched_audiences),
         "total_members_processed": total_generated + total_failed,
         "total_successfully_generated": total_generated,
@@ -618,14 +531,15 @@ def print_summary(results: dict[str, Any]) -> None:
 def main() -> None:
     """Main entry point for the script."""
     parser = argparse.ArgumentParser(
-        description="Generate detailed audience characteristics using persona and attributes"
+        description="Generate detailed audience characteristics using persona templates "
+        "and screener questions as input to Azure OpenAI LLM."
     )
     parser.add_argument(
         "-i",
         "--input",
         type=Path,
-        default=Path("data/attribute_slots.json"),
-        help="Path to attribute slots JSON file (default: data/attribute_slots.json)",
+        default=Path("data/personas_input_10.json"),
+        help="Path to personas input JSON file (default: data/personas_input_10.json)",
     )
     parser.add_argument(
         "-o",
