@@ -57,7 +57,7 @@ class GeneratedMember(BaseModel):
 # System Prompt with JSON Schema
 # ============================================================================
 
-GENERATION_SYSTEM_PROMPT = f"""You are an expert persona generator creating realistic audience member profiles.
+GENERATION_SYSTEM_PROMPT = """You are an expert persona generator creating realistic audience member profiles.
 
 Generate a realistic, believable individual that:
 - Embodies the spirit and characteristics of the base persona
@@ -71,11 +71,16 @@ NAME GENERATION RULES:
 - Match the name to the persona's location, ethnicity, and gender
 - Be creative: draw from a wide variety of cultural naming conventions
 
-You MUST respond with valid JSON matching this exact schema:
-{GeneratedProfile.model_json_schema()}
+You MUST respond with valid JSON containing EXACTLY these fields:
+- "name": (string) A realistic full name appropriate for the persona's demographic
+- "about": (string) Behavioral description focusing on interests, digital habits, creative pursuits, and lifestyle
+- "goalsAndMotivations": (array of 3 strings) List of goals and motivations
+- "frustrations": (array of 3 strings) List of frustrations
+- "needState": (string) Current psychological or motivational state
+- "occasions": (string) Contextual situations for content engagement
 
 Example output:
-{{
+{
     "name": "Kavitha Menon",
     "about": "A creative professional who thrives on innovation...",
     "goalsAndMotivations": [
@@ -90,7 +95,9 @@ Example output:
     ],
     "needState": "Driven and resourceful, seeking growth opportunities",
     "occasions": "Engages with content during morning planning and evening wind-down"
-}}"""
+}
+
+IMPORTANT: Return ONLY the JSON object with actual values. Do NOT return a schema definition or type descriptions."""
 
 
 def create_generation_prompt(member: dict[str, Any]) -> str:
