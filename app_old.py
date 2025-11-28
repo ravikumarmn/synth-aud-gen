@@ -7,8 +7,9 @@ import os
 import shutil
 import tempfile
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
+from typing import Any
 from urllib.parse import unquote, urlparse
 from uuid import uuid4
 
@@ -19,7 +20,7 @@ from azure.storage.blob import (
     generate_blob_sas,
 )
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, File, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -54,19 +55,125 @@ app.add_middleware(
 )
 
 
-# ============== Request/Response Models ==============
+class ScreenerQuestion(BaseModel):
+    """Screener question and answer pair."""
+
+    question: str
+    answer: str
 
 
-class GenerateAudienceRequest(BaseModel):
-    """Request body for audience generation from blob URL."""
+class Persona(BaseModel):
+    """Base persona information."""
+
+    id: str | None = None
+    personaName: str = ""
+    personaType: str = ""
+    gender: str = ""
+    age: int | None = None
+    location: str = ""
+    ethnicity: str = ""
+    about: str = ""
+    goalsAndMotivations: str = ""
+    frustrations: str = ""
+    needState: str = ""
+    occasions: str = ""
+
+
+class AudienceInput(BaseModel):
+    """Single audience input with persona and screener questions."""
+
+    persona: Persona
+    screenerQuestions: list[ScreenerQuestion] = Field(default_factory=list)
+    sampleSize: int = Field(default=1, ge=1, le=100)
+
+
+class GenerationRequest(BaseModel):
+    """Request body for audience characteristics generation."""
+
+    projectName: str | None = None
+    projectDescription: str | None = None
+    projectId: str | None = None
+    userId: str | None = None
+    requestId: str | None = None
+    audiences: list[AudienceInput]
+    maxConcurrent: int = Field(default=10, ge=1, le=50)
+
+
+class GeneratedMember(BaseModel):
+    """Generated audience member."""
+
+    member_id: str
+    about: str | None = None
+    goals_and_motivations: list[str] | None = None
+    frustrations: list[str] | None = None
+    need_state: str | None = None
+    occasions: str | None = None
+    generation_error: str | None = None
+
+
+class GenerationStats(BaseModel):
+    """Statistics for generation process."""
+
+    total_members: int
+    successfully_generated: int
+    failed: int
+
+
+class AudienceMetadata(BaseModel):
+    """Metadata for a generated audience."""
+
+    audience_index: int
+    sample_size: int
+    persona: dict[str, Any]
+    screener_questions: list[dict[str, Any]]
+    generation_stats: GenerationStats
+    generation_time_seconds: float
+    created_at: str
+
+
+class GeneratedAudience(BaseModel):
+    """Generated audience with members and metadata."""
+
+    generated_audience: list[GeneratedMember]
+    metadata: AudienceMetadata
+
+
+class GenerationResponse(BaseModel):
+    """Response body for audience characteristics generation."""
+
+    project_name: str | None = None
+    project_description: str | None = None
+    project_id: str | None = None
+    user_id: str | None = None
+    request_id: str | None = None
+    generation_model: str
+    provider: str
+    total_audiences: int
+    total_members_processed: int
+    total_successfully_generated: int
+    total_failed: int
+    processing_time_seconds: float
+    audiences: list[GeneratedAudience]
+
+
+class HealthResponse(BaseModel):
+    """Health check response."""
+
+    status: str
+    service: str
+    version: str
+
+
+class BlobProcessRequest(BaseModel):
+    """Request body for blob-based generation."""
 
     input_blob_url: str  # Full blob URL to input JSON
     output_blob_prefix: str = "audience_output"  # Prefix for output JSON
     max_concurrent: int = Field(default=10, ge=1, le=50)
 
 
-class GenerateAudienceResponse(BaseModel):
-    """Response for audience generation."""
+class BlobProcessResponse(BaseModel):
+    """Response for blob-based generation."""
 
     status: str
     input_blob: str
@@ -78,17 +185,7 @@ class GenerateAudienceResponse(BaseModel):
     processing_time_seconds: float
 
 
-class HealthResponse(BaseModel):
-    """Health check response."""
-
-    status: str
-    service: str
-    version: str
-
-
-# ============== Helper Functions ==============
-
-
+# Helper: parse container + blob name from full blob URL
 def parse_blob_url(blob_url: str) -> tuple[str, str]:
     """Parse container and blob name from full blob URL."""
     parsed = urlparse(blob_url)
@@ -101,6 +198,7 @@ def parse_blob_url(blob_url: str) -> tuple[str, str]:
     return unquote(container), unquote(blob_name)
 
 
+# Helper: create timestamped output blob name
 def generate_output_blob_name(prefix: str) -> str:
     """Generate unique output blob name with timestamp and UUID."""
     stamp = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
@@ -109,6 +207,7 @@ def generate_output_blob_name(prefix: str) -> str:
     return f"{safe_prefix}_{stamp}_{short_uuid}.json"
 
 
+# Helper: parse AccountName and AccountKey from connection string
 def parse_account_from_connection_string(
     conn_str: str,
 ) -> tuple[str | None, str | None]:
@@ -123,9 +222,6 @@ def parse_account_from_connection_string(
     return account_name, account_key
 
 
-# ============== Endpoints ==============
-
-
 @app.get("/health", response_model=HealthResponse, tags=["Health"])
 async def health_check() -> HealthResponse:
     """Health check endpoint."""
@@ -137,20 +233,280 @@ async def health_check() -> HealthResponse:
 
 
 @app.post(
-    "/generate_audience",
-    response_model=GenerateAudienceResponse,
+    "/generate",
+    response_model=GenerationResponse,
     tags=["Generation"],
-    summary="Generate audience characteristics from blob URL",
-    description="Download input JSON from Azure Blob Storage, generate audience characteristics, and upload results.",
+    summary="Generate audience characteristics",
+    description="Generate detailed characteristics for audience members based on persona templates and screener questions.",
 )
-async def generate_audience(req: GenerateAudienceRequest) -> GenerateAudienceResponse:
+async def generate_characteristics(request: GenerationRequest) -> GenerationResponse:
+    """Generate audience characteristics for all provided audiences."""
+    start_time = time.time()
+
+    # Initialize Azure OpenAI client
+    try:
+        client, deployment = _create_azure_client()
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Azure OpenAI not configured: {str(e)}",
+        )
+
+    try:
+        audience_data_list = [
+            {
+                "persona": audience.persona.model_dump(),
+                "screenerQuestions": [
+                    q.model_dump() for q in audience.screenerQuestions
+                ],
+                "sampleSize": audience.sampleSize,
+            }
+            for audience in request.audiences
+        ]
+
+        # Run all audiences in parallel
+        tasks = [
+            generate_audience_characteristics(
+                client=client,
+                deployment=deployment,
+                audience_data=audience_data,
+                audience_index=idx,
+                max_concurrent=request.maxConcurrent,
+            )
+            for idx, audience_data in enumerate(audience_data_list)
+        ]
+        enriched_audiences = await asyncio.gather(*tasks)
+
+        # Calculate totals
+        total_generated = sum(
+            aud["metadata"]["generation_stats"]["successfully_generated"]
+            for aud in enriched_audiences
+        )
+        total_failed = sum(
+            aud["metadata"]["generation_stats"]["failed"] for aud in enriched_audiences
+        )
+
+        processing_time = time.time() - start_time
+
+        # Close client
+        await client.close()
+
+        return GenerationResponse(
+            project_name=request.projectName,
+            project_description=request.projectDescription,
+            project_id=request.projectId,
+            user_id=request.userId,
+            request_id=request.requestId,
+            generation_model=f"azure:{deployment}",
+            provider="azure",
+            total_audiences=len(enriched_audiences),
+            total_members_processed=total_generated + total_failed,
+            total_successfully_generated=total_generated,
+            total_failed=total_failed,
+            processing_time_seconds=round(processing_time, 2),
+            audiences=enriched_audiences,
+        )
+
+    except Exception as e:
+        await client.close()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Generation failed: {str(e)}",
+        )
+
+
+@app.post(
+    "/generate/audience",
+    response_model=GeneratedAudience,
+    tags=["Generation"],
+    summary="Generate audience",
+    description="Generate audience members based on persona and screener questions.",
+)
+async def generate_audience(
+    audience: AudienceInput,
+    max_concurrent: int = 10,
+) -> GeneratedAudience:
+    """Generate audience members for a single audience."""
+    # Initialize Azure OpenAI client
+    try:
+        client, deployment = _create_azure_client()
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Azure OpenAI not configured: {str(e)}",
+        )
+
+    try:
+        audience_data = {
+            "persona": audience.persona.model_dump(),
+            "screenerQuestions": [q.model_dump() for q in audience.screenerQuestions],
+            "sampleSize": audience.sampleSize,
+        }
+        audience_start_time = time.time()
+        result = await generate_audience_characteristics(
+            client=client,
+            deployment=deployment,
+            audience_data=audience_data,
+            audience_index=0,
+            max_concurrent=max_concurrent,
+        )
+        audience_time = time.time() - audience_start_time
+        result["metadata"]["generation_time_seconds"] = round(audience_time, 2)
+        result["metadata"]["created_at"] = datetime.now(timezone.utc).isoformat()
+
+        await client.close()
+        return result
+
+    except Exception as e:
+        await client.close()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Generation failed: {str(e)}",
+        )
+
+
+@app.post(
+    "/generate/file",
+    response_model=GenerationResponse,
+    tags=["Generation"],
+    summary="Generate audience from file",
+    description="Upload a JSON file with persona input data and generate audience characteristics.",
+)
+async def generate_from_file(
+    file: UploadFile = File(..., description="JSON file with persona input data"),
+    max_concurrent: int = 10,
+) -> GenerationResponse:
+    """
+    Generate audience characteristics from an uploaded JSON file.
+
+    The file should follow the persona_input.json format with:
+    - projectName, projectDescription, projectId, userId, requestId (optional metadata)
+    - audiences[]: Array of audience data with persona, screenerQuestions, sampleSize
+    """
+    # Validate file type
+    if not file.filename or not file.filename.endswith(".json"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="File must be a JSON file (.json extension)",
+        )
+
+    # Read and parse file content
+    try:
+        content = await file.read()
+        data = json.loads(content.decode("utf-8"))
+    except json.JSONDecodeError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid JSON file: {str(e)}",
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Failed to read file: {str(e)}",
+        )
+
+    # Validate required structure
+    audiences = data.get("audiences", [])
+    if not audiences:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="File must contain 'audiences' array with at least one audience",
+        )
+
+    start_time = time.time()
+
+    # Initialize Azure OpenAI client
+    try:
+        client, deployment = _create_azure_client()
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Azure OpenAI not configured: {str(e)}",
+        )
+
+    try:
+        normalized_audiences = [
+            {
+                "persona": aud.get("persona", {}),
+                "screenerQuestions": aud.get("screenerQuestions", []),
+                "sampleSize": aud.get("sampleSize", 1),
+            }
+            for aud in audiences
+        ]
+
+        tasks = [
+            generate_audience_characteristics(
+                client=client,
+                deployment=deployment,
+                audience_data=aud,
+                audience_index=idx,
+                max_concurrent=max_concurrent,
+            )
+            for idx, aud in enumerate(normalized_audiences)
+        ]
+        enriched_audiences = await asyncio.gather(*tasks)
+
+        total_generated = sum(
+            aud["metadata"]["generation_stats"]["successfully_generated"]
+            for aud in enriched_audiences
+        )
+        total_failed = sum(
+            aud["metadata"]["generation_stats"]["failed"] for aud in enriched_audiences
+        )
+
+        processing_time = time.time() - start_time
+
+        await client.close()
+
+        project_id = data.get("projectId")
+        user_id = data.get("userId")
+        response = GenerationResponse(
+            project_name=data.get("projectName"),
+            project_description=data.get("projectDescription"),
+            project_id=str(project_id) if project_id is not None else None,
+            user_id=str(user_id) if user_id is not None else None,
+            request_id=data.get("requestId"),
+            generation_model=f"azure:{deployment}",
+            provider="azure",
+            total_audiences=len(enriched_audiences),
+            total_members_processed=total_generated + total_failed,
+            total_successfully_generated=total_generated,
+            total_failed=total_failed,
+            processing_time_seconds=round(processing_time, 2),
+            audiences=enriched_audiences,
+        )
+
+        original_name = file.filename or "output"
+        base_name = original_name.rsplit(".", 1)[0]
+        output_filename = f"data/{base_name}_output.json"
+        with open(output_filename, "w", encoding="utf-8") as f:
+            json.dump(response.model_dump(), f, indent=2, ensure_ascii=False)
+        print(f"Output saved to: {output_filename}")
+
+        return response
+
+    except Exception as e:
+        await client.close()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Generation failed: {str(e)}",
+        )
+
+
+@app.post(
+    "/generate/blob",
+    response_model=BlobProcessResponse,
+    tags=["Generation"],
+    summary="Generate audience from blob URL",
+    description="Process a JSON file from Azure Blob Storage URL and upload results to blob storage.",
+)
+async def generate_from_blob(req: BlobProcessRequest) -> BlobProcessResponse:
     """
     Generate audience characteristics from a blob URL.
 
-    - Downloads input JSON from the provided blob URL
-    - Processes audiences using Azure OpenAI
-    - Uploads output to 'generated-synthetic-audience' container
-    - Returns a SAS URL for the output blob
+    Downloads input JSON from the provided blob URL, processes it,
+    uploads the output to 'generated-synthetic-audience' container,
+    and returns a SAS URL for the output.
     """
     logger.info(f"Received request for blob: {req.input_blob_url}")
     start_time = time.time()
@@ -378,7 +734,7 @@ async def generate_audience(req: GenerateAudienceRequest) -> GenerateAudienceRes
             )
 
         # ---------- SUCCESS RESPONSE ----------
-        return GenerateAudienceResponse(
+        return BlobProcessResponse(
             status="success",
             input_blob=req.input_blob_url,
             output_blob=output_url,
