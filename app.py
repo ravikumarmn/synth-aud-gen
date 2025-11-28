@@ -395,7 +395,7 @@ async def generate_from_file(
         project_id = data.get("projectId")
         user_id = data.get("userId")
 
-        return GenerationResponse(
+        response = GenerationResponse(
             project_name=data.get("projectName"),
             project_description=data.get("projectDescription"),
             project_id=str(project_id) if project_id is not None else None,
@@ -410,6 +410,18 @@ async def generate_from_file(
             processing_time_seconds=round(processing_time, 2),
             audiences=enriched_audiences,
         )
+
+        # Save output to file: {original_filename}_output.json
+        original_name = file.filename or "output"
+        base_name = original_name.rsplit(".", 1)[0]  # Remove .json extension
+        output_filename = f"data/{base_name}_output.json"
+
+        with open(output_filename, "w", encoding="utf-8") as f:
+            json.dump(response.model_dump(), f, indent=2, ensure_ascii=False)
+
+        print(f"Output saved to: {output_filename}")
+
+        return response
 
     except Exception as e:
         await client.close()
