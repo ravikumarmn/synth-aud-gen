@@ -143,7 +143,9 @@ def _create_azure_client() -> tuple[AsyncAzureOpenAI, str]:
     """
     api_key = os.getenv("AZURE_OPENAI_API_KEY")
     endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o")
+    deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT") or os.getenv(
+        "AZURE_OPENAI_DEPLOYMENT_NAME", "gpt-4o"
+    )
     api_version = os.getenv("OPENAI_API_VERSION", "2024-08-01-preview")
 
     if not api_key or not endpoint:
