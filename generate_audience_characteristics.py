@@ -350,57 +350,77 @@ def convert_audience_to_members(
     return members
 
 
-async def generate_audience_characteristics(
+@dataclass
+class ProgressTracker:
+    """Thread-safe progress tracker for parallel generation."""
+
+    total_members: int
+    completed: int = 0
+    _lock: asyncio.Lock | None = None
+
+    def __post_init__(self) -> None:
+        self._lock = asyncio.Lock()
+
+    async def increment(self, member_id: str, audience_index: int) -> int:
+        """Increment completed count and return new value."""
+        async with self._lock:  # type: ignore
+            self.completed += 1
+            print(
+                f"  [{self.completed}/{self.total_members}] "
+                f"Audience {audience_index} - Generated: {member_id}"
+            )
+            return self.completed
+
+
+async def generate_member_with_tracking(
     client: AsyncAzureOpenAI,
     deployment: str,
-    audience_data: dict[str, Any],
-    audience_index: int,
-    max_concurrent: int = 10,
-) -> dict[str, Any]:
+    member: dict[str, Any],
+    semaphore: asyncio.Semaphore,
+    progress: ProgressTracker,
+) -> tuple[GeneratedCharacteristics | None, dict[str, Any]]:
     """
-    Generate characteristics for all members in an audience using async.
+    Generate characteristics for a single member with semaphore and progress tracking.
 
     Args:
         client: AsyncAzureOpenAI client
         deployment: Azure deployment name
-        audience_data: Audience dictionary with persona, screenerQuestions, sampleSize
+        member: Member data dictionary
+        semaphore: Shared semaphore for rate limiting
+        progress: Shared progress tracker
+
+    Returns:
+        Tuple of (GeneratedCharacteristics or None, original member dict)
+    """
+    async with semaphore:
+        result = await generate_member_characteristics(client, deployment, member)
+        await progress.increment(
+            member.get("member_id", "unknown"),
+            member.get("audience_index", -1),
+        )
+        return result, member
+
+
+def build_audience_result(
+    audience_data: dict[str, Any],
+    audience_index: int,
+    results: list[tuple[GeneratedCharacteristics | None, dict[str, Any]]],
+    generation_time: float,
+) -> dict[str, Any]:
+    """
+    Build the result dictionary for a single audience from generation results.
+
+    Args:
+        audience_data: Original audience data
         audience_index: Index of this audience
-        max_concurrent: Maximum number of concurrent API calls
+        results: List of (GeneratedCharacteristics, member) tuples
+        generation_time: Time taken for generation in seconds
 
     Returns:
         Dictionary with generated_audience and metadata sections
     """
-    start_time = time.time()
-
-    # Convert audience to members format
-    members = convert_audience_to_members(audience_data, audience_index)
-
-    print(
-        f"\nGenerating characteristics for Audience {audience_index} "
-        f"({len(members)} members) with {max_concurrent} concurrent requests..."
-    )
-
     generated_audience: list[dict[str, Any]] = []
     failed_members: list[str] = []
-    completed_count = [0]
-    total = len(members)
-
-    # Semaphore to limit concurrent requests
-    semaphore = asyncio.Semaphore(max_concurrent)
-
-    async def generate_with_semaphore(
-        member: dict[str, Any],
-    ) -> tuple[GeneratedCharacteristics | None, dict[str, Any]]:
-        async with semaphore:
-            result = await generate_member_characteristics(client, deployment, member)
-            completed_count[0] += 1
-            member_id = member.get("member_id", "unknown")
-            print(f"  [{completed_count[0]}/{total}] Generated: {member_id}")
-            return result, member
-
-    # Run all tasks concurrently
-    tasks = [generate_with_semaphore(member) for member in members]
-    results = await asyncio.gather(*tasks)
 
     for result, original_member in results:
         member_id = original_member.get("member_id", "unknown")
@@ -427,7 +447,6 @@ async def generate_audience_characteristics(
         print(f"  Failed to generate for: {', '.join(failed_members)}")
 
     persona = audience_data.get("persona", {})
-    generation_time = time.time() - start_time
 
     return {
         "generated_audience": generated_audience,
@@ -437,8 +456,8 @@ async def generate_audience_characteristics(
             "persona": persona,
             "screener_questions": audience_data.get("screenerQuestions", []),
             "generation_stats": {
-                "total_members": len(members),
-                "successfully_generated": len(members) - len(failed_members),
+                "total_members": len(results),
+                "successfully_generated": len(results) - len(failed_members),
                 "failed": len(failed_members),
             },
             "generation_time_seconds": round(generation_time, 2),
@@ -447,10 +466,131 @@ async def generate_audience_characteristics(
     }
 
 
+async def generate_all_audiences_parallel(
+    client: AsyncAzureOpenAI,
+    deployment: str,
+    audiences: list[dict[str, Any]],
+    max_concurrent: int = 10,
+) -> list[dict[str, Any]]:
+    """
+    Generate characteristics for ALL audiences and personas in parallel.
+
+    This function creates a single global semaphore to control the total number
+    of concurrent API calls across all audiences and members, enabling true
+    parallel generation.
+
+    Args:
+        client: AsyncAzureOpenAI client
+        deployment: Azure deployment name
+        audiences: List of audience dictionaries
+        max_concurrent: Maximum total concurrent API calls (global limit)
+
+    Returns:
+        List of enriched audience dictionaries with generated characteristics
+    """
+    start_time = time.time()
+
+    # Prepare all members from all audiences
+    all_members: list[dict[str, Any]] = []
+    audience_member_ranges: list[tuple[int, int, int, dict[str, Any]]] = []
+
+    for idx, audience_data in enumerate(audiences):
+        members = convert_audience_to_members(audience_data, idx)
+        start_idx = len(all_members)
+        all_members.extend(members)
+        end_idx = len(all_members)
+        audience_member_ranges.append((idx, start_idx, end_idx, audience_data))
+
+    total_members = len(all_members)
+    print(
+        f"\nStarting parallel generation for {len(audiences)} audiences, "
+        f"{total_members} total members with {max_concurrent} concurrent requests..."
+    )
+
+    # Single global semaphore for all requests
+    semaphore = asyncio.Semaphore(max_concurrent)
+    progress = ProgressTracker(total_members=total_members)
+
+    # Create tasks for ALL members across ALL audiences
+    tasks = [
+        generate_member_with_tracking(client, deployment, member, semaphore, progress)
+        for member in all_members
+    ]
+
+    # Run all tasks in parallel (semaphore controls concurrency)
+    all_results = await asyncio.gather(*tasks)
+
+    # Group results by audience and build output
+    enriched_audiences: list[dict[str, Any]] = []
+    for idx, start_idx, end_idx, audience_data in audience_member_ranges:
+        audience_results = list(all_results[start_idx:end_idx])
+        audience_time = time.time() - start_time  # Approximate per-audience time
+        enriched = build_audience_result(
+            audience_data, idx, audience_results, audience_time
+        )
+        enriched_audiences.append(enriched)
+
+    total_time = time.time() - start_time
+    print(f"\nParallel generation completed in {total_time:.2f} seconds")
+
+    return enriched_audiences
+
+
+async def generate_audience_characteristics(
+    client: AsyncAzureOpenAI,
+    deployment: str,
+    audience_data: dict[str, Any],
+    audience_index: int,
+    max_concurrent: int = 10,
+) -> dict[str, Any]:
+    """
+    Generate characteristics for all members in a single audience.
+
+    Note: For parallel generation across multiple audiences, use
+    `generate_all_audiences_parallel` instead.
+
+    Args:
+        client: AsyncAzureOpenAI client
+        deployment: Azure deployment name
+        audience_data: Audience dictionary with persona, screenerQuestions, sampleSize
+        audience_index: Index of this audience
+        max_concurrent: Maximum number of concurrent API calls
+
+    Returns:
+        Dictionary with generated_audience and metadata sections
+    """
+    start_time = time.time()
+
+    # Convert audience to members format
+    members = convert_audience_to_members(audience_data, audience_index)
+
+    print(
+        f"\nGenerating characteristics for Audience {audience_index} "
+        f"({len(members)} members) with {max_concurrent} concurrent requests..."
+    )
+
+    # Use shared semaphore and progress tracker
+    semaphore = asyncio.Semaphore(max_concurrent)
+    progress = ProgressTracker(total_members=len(members))
+
+    # Run all tasks concurrently
+    tasks = [
+        generate_member_with_tracking(client, deployment, member, semaphore, progress)
+        for member in members
+    ]
+    results = await asyncio.gather(*tasks)
+
+    generation_time = time.time() - start_time
+    return build_audience_result(
+        audience_data, audience_index, list(results), generation_time
+    )
+
+
 async def run_generation_async(
     input_path: Path,
     output_path: Path,
     max_concurrent: int = 10,
+    parallel_mode: bool = True,
 ) -> dict[str, Any]:
     """
     Run characteristic generation on all audiences in the input file using async.
@@ -459,7 +599,10 @@ async def run_generation_async(
     Args:
         input_path: Path to audience samples JSON file
         output_path: Path to write generated results
-        max_concurrent: Maximum concurrent API calls
+        max_concurrent: Maximum concurrent API calls (global limit in parallel mode)
+        parallel_mode: If True, generate all audiences/personas in parallel with
+                       a single global semaphore. If False, process audiences
+                       sequentially with per-audience concurrency.
 
     Returns:
         Complete results dictionary with generated characteristics
@@ -477,15 +620,21 @@ async def run_generation_async(
 
     print(f"Loaded {len(audiences)} audiences from {input_path}")
     print(f"Total samples to generate: {total_samples}")
+    print(f"Parallel mode: {parallel_mode}")
 
-    # Generate characteristics for all audiences concurrently
-    tasks = [
-        generate_audience_characteristics(
-            client, deployment, audience_data, idx, max_concurrent
+    if parallel_mode:
+        # True parallel: all audiences and members share one global semaphore
+        enriched_audiences = await generate_all_audiences_parallel(
+            client, deployment, audiences, max_concurrent
         )
-        for idx, audience_data in enumerate(audiences)
-    ]
-    enriched_audiences = await asyncio.gather(*tasks)
+    else:
+        # Sequential audiences with per-audience concurrency
+        enriched_audiences = []
+        for idx, audience_data in enumerate(audiences):
+            result = await generate_audience_characteristics(
+                client, deployment, audience_data, idx, max_concurrent
+            )
+            enriched_audiences.append(result)
 
     # Compile results
     total_generated = sum(
@@ -526,6 +675,7 @@ def run_generation(
     input_path: Path,
     output_path: Path,
     max_concurrent: int = 10,
+    parallel_mode: bool = True,
 ) -> dict[str, Any]:
     """
     Synchronous wrapper for run_generation_async.
@@ -534,11 +684,14 @@ def run_generation(
         input_path: Path to audience samples JSON file
         output_path: Path to write generated results
         max_concurrent: Maximum concurrent API calls
+        parallel_mode: If True, generate all audiences/personas in parallel
 
     Returns:
         Complete results dictionary with generated characteristics
     """
-    return asyncio.run(run_generation_async(input_path, output_path, max_concurrent))
+    return asyncio.run(
+        run_generation_async(input_path, output_path, max_concurrent, parallel_mode)
+    )
 
 
 def print_summary(results: dict[str, Any]) -> None:
@@ -604,6 +757,11 @@ def main() -> None:
         default=10,
         help="Maximum concurrent API calls (default: 10)",
     )
+    parser.add_argument(
+        "--sequential",
+        action="store_true",
+        help="Process audiences sequentially instead of in parallel",
+    )
 
     args = parser.parse_args()
 
@@ -624,6 +782,7 @@ def main() -> None:
             args.input,
             args.output,
             args.concurrent,
+            parallel_mode=not args.sequential,
         )
 
         elapsed_time = time.time() - start_time
