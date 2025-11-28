@@ -23,11 +23,11 @@ import json
 import argparse
 import os
 import time
-from concurrent.futures import ThreadPoolExecutor, as_completed
+import asyncio
 from pathlib import Path
 from typing import Any
-from dataclasses import dataclass, asdict
-from openai import AzureOpenAI
+from dataclasses import dataclass
+from openai import AsyncAzureOpenAI
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -131,9 +131,9 @@ Generate a complete, realistic audience member profile as JSON."""
     return prompt
 
 
-def _create_azure_client() -> tuple[AzureOpenAI, str]:
+def _create_azure_client() -> tuple[AsyncAzureOpenAI, str]:
     """
-    Create Azure OpenAI client.
+    Create Azure OpenAI async client.
 
     Returns:
         Tuple of (client, deployment_name)
@@ -155,7 +155,7 @@ def _create_azure_client() -> tuple[AzureOpenAI, str]:
             "  - OPENAI_API_VERSION (optional)"
         )
 
-    client = AzureOpenAI(
+    client = AsyncAzureOpenAI(
         api_key=api_key,
         api_version=api_version,
         azure_endpoint=endpoint,
@@ -163,16 +163,16 @@ def _create_azure_client() -> tuple[AzureOpenAI, str]:
     return client, deployment
 
 
-def _call_llm(
-    client: AzureOpenAI,
+async def _call_llm(
+    client: AsyncAzureOpenAI,
     deployment: str,
     prompt: str,
 ) -> str:
     """
-    Make an LLM API call and return the response content.
+    Make an async LLM API call and return the response content.
 
     Args:
-        client: AzureOpenAI client
+        client: AsyncAzureOpenAI client
         deployment: Azure deployment name
         prompt: User prompt
 
@@ -182,7 +182,7 @@ def _call_llm(
     Raises:
         ValueError: If API returns no content
     """
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model=deployment,
         messages=[
             {"role": "system", "content": GENERATION_SYSTEM_PROMPT},
@@ -234,8 +234,8 @@ def _parse_llm_response(
     )
 
 
-def generate_member_characteristics(
-    client: AzureOpenAI,
+async def generate_member_characteristics(
+    client: AsyncAzureOpenAI,
     deployment: str,
     member: dict[str, Any],
     max_retries: int = 3,
@@ -244,7 +244,7 @@ def generate_member_characteristics(
     Generate characteristics for a single audience member using Azure OpenAI.
 
     Args:
-        client: AzureOpenAI client
+        client: AsyncAzureOpenAI client
         deployment: Azure deployment name
         member: Audience member to generate characteristics for
         max_retries: Number of retries on failure
@@ -256,17 +256,17 @@ def generate_member_characteristics(
 
     for attempt in range(max_retries):
         try:
-            content = _call_llm(client, deployment, prompt)
+            content = await _call_llm(client, deployment, prompt)
             return _parse_llm_response(content, member)
 
         except json.JSONDecodeError as e:
             print(f"  JSON parse error (attempt {attempt + 1}): {e}")
             if attempt < max_retries - 1:
-                time.sleep(1)
+                await asyncio.sleep(1)
         except Exception as e:
             print(f"  API error (attempt {attempt + 1}): {e}")
             if attempt < max_retries - 1:
-                time.sleep(2)
+                await asyncio.sleep(2)
 
     return None
 
@@ -328,22 +328,22 @@ def convert_audience_to_members(
     return members
 
 
-def generate_audience_characteristics(
-    client: AzureOpenAI,
+async def generate_audience_characteristics(
+    client: AsyncAzureOpenAI,
     deployment: str,
     audience_data: dict[str, Any],
     audience_index: int,
-    max_workers: int = 5,
+    max_concurrent: int = 10,
 ) -> dict[str, Any]:
     """
-    Generate characteristics for all members in an audience.
+    Generate characteristics for all members in an audience using async.
 
     Args:
-        client: AzureOpenAI client
+        client: AsyncAzureOpenAI client
         deployment: Azure deployment name
         audience_data: Audience dictionary with persona, screenerQuestions, sampleSize
         audience_index: Index of this audience
-        max_workers: Maximum number of concurrent API calls
+        max_concurrent: Maximum number of concurrent API calls
 
     Returns:
         Dictionary with generated_audience and metadata sections
@@ -353,51 +353,53 @@ def generate_audience_characteristics(
 
     print(
         f"\nGenerating characteristics for Audience {audience_index} "
-        f"({len(members)} members) with {max_workers} workers..."
+        f"({len(members)} members) with {max_concurrent} concurrent requests..."
     )
 
     generated_audience: list[dict[str, Any]] = []
     failed_members: list[str] = []
+    completed_count = [0]  # Use list to allow mutation in nested function
+    total = len(members)
 
-    def generate_with_index(
-        args: tuple[int, dict],
-    ) -> tuple[int, GeneratedCharacteristics | None, dict]:
-        idx, member = args
-        result = generate_member_characteristics(client, deployment, member)
-        return idx, result, member
+    # Semaphore to limit concurrent requests
+    semaphore = asyncio.Semaphore(max_concurrent)
 
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
-        futures = {
-            executor.submit(generate_with_index, (i, member)): i
-            for i, member in enumerate(members)
-        }
+    async def generate_with_semaphore(
+        member: dict[str, Any],
+    ) -> tuple[GeneratedCharacteristics | None, dict[str, Any]]:
+        async with semaphore:
+            result = await generate_member_characteristics(client, deployment, member)
+            completed_count[0] += 1
+            member_id = member.get("member_id", "unknown")
+            print(f"  [{completed_count[0]}/{total}] Generated: {member_id}")
+            return result, member
 
-        completed = 0
-        for future in as_completed(futures):
-            completed += 1
-            idx, result, original_member = future.result()
-            member_id = original_member.get("member_id", "unknown")
-            print(f"  [{completed}/{len(members)}] Generated: {member_id}")
+    # Run all tasks concurrently
+    tasks = [generate_with_semaphore(member) for member in members]
+    results = await asyncio.gather(*tasks)
 
-            if result:
-                # Store only the generated characteristics with member_id
-                audience_member = {
-                    "member_id": member_id,
-                    "about": result.about,
-                    "goals_and_motivations": result.goals_and_motivations,
-                    "frustrations": result.frustrations,
-                    "need_state": result.need_state,
-                    "occasions": result.occasions,
-                }
-                generated_audience.append(audience_member)
-            else:
-                # Keep member with error indication
-                audience_member = {
-                    "member_id": member_id,
-                    "generation_error": "Failed to generate characteristics",
-                }
-                generated_audience.append(audience_member)
-                failed_members.append(member_id)
+    for result, original_member in results:
+        member_id = original_member.get("member_id", "unknown")
+
+        if result:
+            # Store only the generated characteristics with member_id
+            audience_member = {
+                "member_id": member_id,
+                "about": result.about,
+                "goals_and_motivations": result.goals_and_motivations,
+                "frustrations": result.frustrations,
+                "need_state": result.need_state,
+                "occasions": result.occasions,
+            }
+            generated_audience.append(audience_member)
+        else:
+            # Keep member with error indication
+            audience_member = {
+                "member_id": member_id,
+                "generation_error": "Failed to generate characteristics",
+            }
+            generated_audience.append(audience_member)
+            failed_members.append(member_id)
 
     # Sort by member_id to maintain order
     generated_audience.sort(key=lambda m: m.get("member_id", ""))
@@ -422,24 +424,24 @@ def generate_audience_characteristics(
     }
 
 
-def run_generation(
+async def run_generation_async(
     input_path: Path,
     output_path: Path,
-    max_workers: int = 5,
+    max_concurrent: int = 10,
 ) -> dict[str, Any]:
     """
-    Run characteristic generation on all audiences in the input file.
+    Run characteristic generation on all audiences in the input file using async.
     Uses Azure OpenAI.
 
     Args:
         input_path: Path to audience samples JSON file
         output_path: Path to write generated results
-        max_workers: Maximum concurrent API calls
+        max_concurrent: Maximum concurrent API calls
 
     Returns:
         Complete results dictionary with generated characteristics
     """
-    # Initialize Azure OpenAI client
+    # Initialize Azure OpenAI async client
     client, deployment = _create_azure_client()
     print(f"Provider: Azure OpenAI (deployment: {deployment})")
 
@@ -453,18 +455,14 @@ def run_generation(
     print(f"Loaded {len(audiences)} audiences from {input_path}")
     print(f"Total samples to generate: {total_samples}")
 
-    # Generate characteristics for each audience
-    enriched_audiences: list[dict[str, Any]] = []
-
-    for idx, audience_data in enumerate(audiences):
-        enriched_audience = generate_audience_characteristics(
-            client,
-            deployment,
-            audience_data,
-            idx,
-            max_workers,
+    # Generate characteristics for all audiences concurrently
+    tasks = [
+        generate_audience_characteristics(
+            client, deployment, audience_data, idx, max_concurrent
         )
-        enriched_audiences.append(enriched_audience)
+        for idx, audience_data in enumerate(audiences)
+    ]
+    enriched_audiences = await asyncio.gather(*tasks)
 
     # Compile results
     total_generated = sum(
@@ -495,7 +493,29 @@ def run_generation(
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
 
+    # Close the client
+    await client.close()
+
     return results
+
+
+def run_generation(
+    input_path: Path,
+    output_path: Path,
+    max_concurrent: int = 10,
+) -> dict[str, Any]:
+    """
+    Synchronous wrapper for run_generation_async.
+
+    Args:
+        input_path: Path to audience samples JSON file
+        output_path: Path to write generated results
+        max_concurrent: Maximum concurrent API calls
+
+    Returns:
+        Complete results dictionary with generated characteristics
+    """
+    return asyncio.run(run_generation_async(input_path, output_path, max_concurrent))
 
 
 def print_summary(results: dict[str, Any]) -> None:
@@ -556,10 +576,10 @@ def main() -> None:
         help="Path to output file (default: data/audience_characteristics_small.json)",
     )
     parser.add_argument(
-        "--workers",
+        "--concurrent",
         type=int,
-        default=5,
-        help="Maximum concurrent API calls (default: 5)",
+        default=10,
+        help="Maximum concurrent API calls (default: 10)",
     )
 
     args = parser.parse_args()
@@ -572,16 +592,24 @@ def main() -> None:
     print("Starting characteristic generation...")
     print(f"Input: {args.input}")
     print(f"Output: {args.output}")
-    print(f"Max Workers: {args.workers}")
+    print(f"Max Concurrent Requests: {args.concurrent}")
+
+    start_time = time.time()
 
     try:
         results = run_generation(
             args.input,
             args.output,
-            args.workers,
+            args.concurrent,
         )
+
+        elapsed_time = time.time() - start_time
+
         print_summary(results)
         print(f"\nFull results written to: {args.output}")
+        print(f"\n{'=' * 60}")
+        print(f"TOTAL TIME: {elapsed_time:.2f} seconds")
+        print(f"{'=' * 60}")
 
     except ValueError as e:
         print(f"Configuration Error: {e}")
