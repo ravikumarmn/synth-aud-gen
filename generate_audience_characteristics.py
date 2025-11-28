@@ -18,7 +18,7 @@ For each audience member, it generates:
 - needState: Current psychological/motivational state
 - occasions: Contextual situations for content engagement
 """
-
+ 
 import json
 import argparse
 import os

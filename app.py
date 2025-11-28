@@ -7,6 +7,7 @@ using persona templates and screener questions as input to Azure OpenAI LLM.
 
 import json
 import time
+from datetime import datetime, timezone
 from typing import Any
 
 from fastapi import FastAPI, File, HTTPException, UploadFile, status
@@ -110,6 +111,8 @@ class AudienceMetadata(BaseModel):
     persona: dict[str, Any]
     screener_questions: list[dict[str, Any]]
     generation_stats: GenerationStats
+    generation_time_seconds: float
+    created_at: str
 
 
 class GeneratedAudience(BaseModel):
@@ -190,6 +193,7 @@ async def generate_characteristics(
         enriched_audiences: list[dict[str, Any]] = []
 
         for idx, audience in enumerate(request.audiences):
+            audience_start_time = time.time()
             audience_data = {
                 "persona": audience.persona.model_dump(),
                 "screenerQuestions": [
@@ -205,6 +209,9 @@ async def generate_characteristics(
                 audience_index=idx,
                 max_concurrent=request.maxConcurrent,
             )
+            audience_time = time.time() - audience_start_time
+            result["metadata"]["generation_time_seconds"] = round(audience_time, 2)
+            result["metadata"]["created_at"] = datetime.now(timezone.utc).isoformat()
             enriched_audiences.append(result)
 
         # Calculate totals
@@ -271,6 +278,7 @@ async def generate_audience(
         )
 
     try:
+        audience_start_time = time.time()
         audience_data = {
             "persona": audience.persona.model_dump(),
             "screenerQuestions": [q.model_dump() for q in audience.screenerQuestions],
@@ -284,6 +292,9 @@ async def generate_audience(
             audience_index=0,
             max_concurrent=max_concurrent,
         )
+        audience_time = time.time() - audience_start_time
+        result["metadata"]["generation_time_seconds"] = round(audience_time, 2)
+        result["metadata"]["created_at"] = datetime.now(timezone.utc).isoformat()
 
         await client.close()
         return result
@@ -359,6 +370,7 @@ async def generate_from_file(
         enriched_audiences: list[dict[str, Any]] = []
 
         for idx, audience_data in enumerate(audiences):
+            audience_start_time = time.time()
             # Extract and normalize audience data from file format
             persona = audience_data.get("persona", {})
             screener_questions = audience_data.get("screenerQuestions", [])
@@ -377,6 +389,9 @@ async def generate_from_file(
                 audience_index=idx,
                 max_concurrent=max_concurrent,
             )
+            audience_time = time.time() - audience_start_time
+            result["metadata"]["generation_time_seconds"] = round(audience_time, 2)
+            result["metadata"]["created_at"] = datetime.now(timezone.utc).isoformat()
             enriched_audiences.append(result)
 
         # Calculate totals
