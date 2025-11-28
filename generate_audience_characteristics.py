@@ -18,10 +18,11 @@ For each audience member, it generates:
 - needState: Current psychological/motivational state
 - occasions: Contextual situations for content engagement
 """
- 
+
 import json
 import argparse
 import os
+import re
 import time
 import asyncio
 from pathlib import Path
@@ -243,7 +244,18 @@ def _parse_llm_response(
         if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
             content = content[start_idx : end_idx + 1]
 
-    result_data = json.loads(content)
+    # Fix common JSON issues: replace single quotes with double quotes
+    # Only do this if standard parsing fails
+    try:
+        result_data = json.loads(content)
+    except json.JSONDecodeError:
+        # Try fixing single quotes (common LLM mistake)
+
+        # Replace single quotes used as string delimiters with double quotes
+        # This regex handles: {'key': 'value'} -> {"key": "value"}
+        fixed_content = re.sub(r"(?<=[{,:\[])\s*'", ' "', content)
+        fixed_content = re.sub(r"'\s*(?=[}\],:])", '"', fixed_content)
+        result_data = json.loads(fixed_content)
 
     return GeneratedCharacteristics(
         member_id=member.get("member_id", "unknown"),
