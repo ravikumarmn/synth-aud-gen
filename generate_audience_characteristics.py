@@ -6,6 +6,8 @@ Generates detailed audience member characteristics using persona templates
 and screener questions as input to Azure OpenAI LLM.
 """
 
+from __future__ import annotations
+
 import argparse
 import asyncio
 import json
@@ -51,12 +53,18 @@ Generate a realistic, believable individual that:
 - Has internally consistent traits and behaviors
 - Feels like a real person, not a stereotype
 
-Respond ONLY with valid JSON in this exact format:
+CRITICAL: Respond ONLY with valid JSON. No markdown, no code blocks, no explanations.
+- All property names MUST be in double quotes
+- All string values MUST be in double quotes
+- Escape any quotes inside strings with backslash: \\"
+- Do NOT include trailing commas
+
+Output this exact JSON structure:
 {{
     "about": "Behavioral description focusing on interests, digital habits, creative pursuits, and lifestyle preferences without any demographic markers",
     "goalsAndMotivations": [
         "Achievement-oriented goal focusing on skills or outcomes",
-        "Growth-oriented motivation related to learning or development", 
+        "Growth-oriented motivation related to learning or development",
         "Impact-oriented aspiration about influence or contribution"
     ],
     "frustrations": [
@@ -271,11 +279,18 @@ def _parse_llm_response(
         result_data = json.loads(content)
     except json.JSONDecodeError as first_error:
         fixed_content = content
+
+        # Fix unquoted property names: {about: "..." -> {"about": "...
+        # Matches word characters after { or , that are followed by :
+        fixed_content = re.sub(r"([{,])\s*(\w+)\s*:", r'\1"\2":', fixed_content)
+
         # Remove trailing commas
         fixed_content = re.sub(r",\s*([}\]])", r"\1", fixed_content)
-        # Replace single quotes with double quotes
+
+        # Replace single quotes with double quotes for values
         fixed_content = re.sub(r"(?<=[{,:\[])\s*'", ' "', fixed_content)
         fixed_content = re.sub(r"'\s*(?=[}\],:])", '"', fixed_content)
+
         # Fix unescaped newlines in strings
         fixed_content = re.sub(r"(?<!\\)\n", r"\\n", fixed_content)
 
@@ -284,6 +299,8 @@ def _parse_llm_response(
         except json.JSONDecodeError:
             # Try fixing unescaped quotes inside strings
             fixed_content = _fix_unescaped_quotes_in_strings(content)
+            # Re-apply all fixes
+            fixed_content = re.sub(r"([{,])\s*(\w+)\s*:", r'\1"\2":', fixed_content)
             fixed_content = re.sub(r",\s*([}\]])", r"\1", fixed_content)
             fixed_content = re.sub(r"(?<!\\)\n", r"\\n", fixed_content)
             try:
