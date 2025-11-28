@@ -27,7 +27,9 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 from dataclasses import dataclass, asdict
-from openai import OpenAI, AzureOpenAI
+from openai import OpenAI
+from langchain_openai import AzureChatOpenAI
+from langchain_core.messages import SystemMessage, HumanMessage
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -132,9 +134,9 @@ Generate a complete, realistic audience member profile as JSON."""
     return prompt
 
 
-def _create_azure_client() -> tuple[AzureOpenAI, str] | None:
+def _create_azure_client() -> tuple[AzureChatOpenAI, str] | None:
     """
-    Create Azure OpenAI client if credentials are available.
+    Create Azure OpenAI client using LangChain if credentials are available.
 
     Returns:
         Tuple of (client, model_name) or None if not configured
@@ -147,10 +149,13 @@ def _create_azure_client() -> tuple[AzureOpenAI, str] | None:
     if not api_key or not endpoint:
         return None
 
-    client = AzureOpenAI(
+    client = AzureChatOpenAI(
         api_key=api_key,
         api_version=api_version,
         azure_endpoint=endpoint,
+        azure_deployment=deployment,
+        temperature=0.8,
+        max_tokens=4096,
     )
     return client, deployment
 
@@ -174,7 +179,7 @@ def _create_gemini_client() -> tuple[OpenAI, str] | None:
 
 
 def _call_llm(
-    client: OpenAI | AzureOpenAI,
+    client: OpenAI | AzureChatOpenAI,
     model: str,
     prompt: str,
 ) -> str:
@@ -182,7 +187,7 @@ def _call_llm(
     Make an LLM API call and return the response content.
 
     Args:
-        client: OpenAI or AzureOpenAI client
+        client: OpenAI or AzureChatOpenAI client
         model: Model/deployment name
         prompt: User prompt
 
@@ -192,6 +197,19 @@ def _call_llm(
     Raises:
         ValueError: If API returns no content
     """
+    # Use LangChain interface for AzureChatOpenAI
+    if isinstance(client, AzureChatOpenAI):
+        messages = [
+            SystemMessage(content=GENERATION_SYSTEM_PROMPT),
+            HumanMessage(content=prompt),
+        ]
+        response = client.invoke(messages)
+        content = response.content
+        if not content:
+            raise ValueError("API returned empty content")
+        return content.strip()
+
+    # Use OpenAI SDK interface for Gemini
     response = client.chat.completions.create(
         model=model,
         messages=[
@@ -251,10 +269,10 @@ def _parse_llm_response(
 
 
 def generate_member_characteristics(
-    primary_client: OpenAI | AzureOpenAI,
+    primary_client: OpenAI | AzureChatOpenAI,
     primary_model: str,
     member: dict[str, Any],
-    fallback_client: OpenAI | AzureOpenAI | None = None,
+    fallback_client: OpenAI | AzureChatOpenAI | None = None,
     fallback_model: str | None = None,
     max_retries: int = 3,
 ) -> GeneratedCharacteristics | None:
@@ -361,11 +379,11 @@ def convert_audience_to_members(
 
 
 def generate_audience_characteristics(
-    primary_client: OpenAI | AzureOpenAI,
+    primary_client: OpenAI | AzureChatOpenAI,
     primary_model: str,
     audience_data: dict[str, Any],
     audience_index: int,
-    fallback_client: OpenAI | AzureOpenAI | None = None,
+    fallback_client: OpenAI | AzureChatOpenAI | None = None,
     fallback_model: str | None = None,
     max_workers: int = 5,
 ) -> dict[str, Any]:
