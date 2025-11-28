@@ -29,6 +29,9 @@ PROVIDER_AZURE = "azure"
 class GeneratedProfile(BaseModel):
     """LLM output schema for generated audience profile."""
 
+    name: str = Field(
+        description="A realistic full name appropriate for the persona's demographic background (location, ethnicity, gender)"
+    )
     about: str = Field(
         description="Behavioral description focusing on interests, digital habits, creative pursuits, and lifestyle preferences"
     )
@@ -42,6 +45,7 @@ class GeneratedMember(BaseModel):
     """Complete generated member with ID and profile."""
 
     member_id: str
+    name: str
     about: str
     goals_and_motivations: list[str]
     frustrations: list[str]
@@ -60,13 +64,14 @@ Generate a realistic, believable individual that:
 - Has internally consistent traits and behaviors
 - Feels like a real person, not a stereotype
 
-IMPORTANT: Do NOT generate or include any personal names (first names, last names, or full names) anywhere in the output. Describe the person using general terms like "this individual", "they", or role-based descriptors instead.
+IMPORTANT: Generate a realistic full name for this person based on their demographic background (location, ethnicity, gender from the persona template). The name should feel authentic and culturally appropriate.
 
 You MUST respond with valid JSON matching this exact schema:
 {GeneratedProfile.model_json_schema()}
 
 Example output:
 {{
+    "name": "Priya Sharma",
     "about": "A creative professional who thrives on innovation...",
     "goalsAndMotivations": [
         "To scale business operations while maintaining quality",
@@ -127,7 +132,7 @@ Above information is enough to understand persona's traits and behavior. Use the
 2. Ensure the generated profile is consistent with the screener answers
 3. The profile should feel like a real person, not a stereotype
 4. Maintain the spirit of the base persona while adapting to the screener context
-5. Do NOT include any personal names—use descriptive terms like "this individual" or "they" instead
+5. Generate a culturally appropriate full name based on the persona's location, ethnicity, and gender
 
 Generate a complete, realistic audience member profile as JSON."""
 
@@ -231,6 +236,7 @@ def _parse_llm_response(
 
     return GeneratedMember(
         member_id=member_id,
+        name=profile.name,
         about=profile.about,
         goals_and_motivations=profile.goalsAndMotivations,
         frustrations=profile.frustrations,
