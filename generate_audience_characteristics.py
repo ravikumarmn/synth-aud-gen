@@ -1,41 +1,27 @@
 #!/usr/bin/env python3
 """
-Audience Characteristics Generator
+Audience Characteristics Generator.
 
-This script generates detailed audience member characteristics using persona
-templates and screener questions as input to Azure OpenAI LLM.
-
-Input: personas_input JSON with structure:
-  - audiences[]: Array of audience data
-    - persona: Base persona information
-    - screenerQuestions[]: Array of qualifying Q&A pairs
-    - sampleSize: Number of members to generate
-
-For each audience member, it generates:
-- about: Behavioral description (interests, digital habits, lifestyle)
-- goalsAndMotivations: List of achievement/growth/impact goals
-- frustrations: List of process/quality/access challenges
-- needState: Current psychological/motivational state
-- occasions: Contextual situations for content engagement
+Generates detailed audience member characteristics using persona templates
+and screener questions as input to Azure OpenAI LLM.
 """
 
-import json
 import argparse
+import asyncio
+import json
 import os
 import re
 import time
-import asyncio
-from pathlib import Path
-from typing import Any
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from openai import AsyncAzureOpenAI
+from pathlib import Path
+from typing import Any
+
 from dotenv import load_dotenv
+from openai import AsyncAzureOpenAI
 
 load_dotenv()
 
-
-# Provider configuration
 PROVIDER_AZURE = "azure"
 
 
@@ -216,47 +202,45 @@ def _parse_llm_response(
     Returns:
         GeneratedCharacteristics object
     """
-    # Strip whitespace
     content = content.strip()
 
-    # Handle markdown code blocks (```json ... ``` or ``` ... ```)
+    # Handle markdown code blocks
     if "```" in content:
-        # Extract content between first ``` and last ```
         parts = content.split("```")
         if len(parts) >= 3:
-            # Content is between first and second ```
             code_block = parts[1]
-            # Remove language identifier if present (e.g., "json\n")
             if code_block.startswith("json"):
                 code_block = code_block[4:]
             content = code_block.strip()
         elif len(parts) == 2:
-            # Only opening ``` found, take content after it
             code_block = parts[1]
             if code_block.startswith("json"):
                 code_block = code_block[4:]
             content = code_block.strip()
 
-    # Try to extract JSON object if there's extra text around it
+    # Extract JSON object if there's extra text
     if not content.startswith("{"):
-        # Find the first { and last }
         start_idx = content.find("{")
         end_idx = content.rfind("}")
         if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
             content = content[start_idx : end_idx + 1]
 
-    # Fix common JSON issues: replace single quotes with double quotes
-    # Only do this if standard parsing fails
+    # Try parsing, then fix common LLM JSON mistakes if needed
     try:
         result_data = json.loads(content)
-    except json.JSONDecodeError:
-        # Try fixing single quotes (common LLM mistake)
-
-        # Replace single quotes used as string delimiters with double quotes
-        # This regex handles: {'key': 'value'} -> {"key": "value"}
-        fixed_content = re.sub(r"(?<=[{,:\[])\s*'", ' "', content)
+    except json.JSONDecodeError as first_error:
+        fixed_content = content
+        # Remove trailing commas
+        fixed_content = re.sub(r",\s*([}\]])", r"\1", fixed_content)
+        # Replace single quotes with double quotes
+        fixed_content = re.sub(r"(?<=[{,:\[])\s*'", ' "', fixed_content)
         fixed_content = re.sub(r"'\s*(?=[}\],:])", '"', fixed_content)
-        result_data = json.loads(fixed_content)
+
+        try:
+            result_data = json.loads(fixed_content)
+        except json.JSONDecodeError:
+            print(f"    Failed to parse JSON. Content:\n{content[:500]}")
+            raise first_error
 
     return GeneratedCharacteristics(
         member_id=member.get("member_id", "unknown"),
@@ -398,7 +382,7 @@ async def generate_audience_characteristics(
 
     generated_audience: list[dict[str, Any]] = []
     failed_members: list[str] = []
-    completed_count = [0]  # Use list to allow mutation in nested function
+    completed_count = [0]
     total = len(members)
 
     # Semaphore to limit concurrent requests
@@ -420,9 +404,7 @@ async def generate_audience_characteristics(
 
     for result, original_member in results:
         member_id = original_member.get("member_id", "unknown")
-
         if result:
-            # Store only the generated characteristics with member_id
             audience_member = {
                 "member_id": member_id,
                 "about": result.about,
@@ -431,17 +413,14 @@ async def generate_audience_characteristics(
                 "need_state": result.need_state,
                 "occasions": result.occasions,
             }
-            generated_audience.append(audience_member)
         else:
-            # Keep member with error indication
             audience_member = {
                 "member_id": member_id,
                 "generation_error": "Failed to generate characteristics",
             }
-            generated_audience.append(audience_member)
             failed_members.append(member_id)
+        generated_audience.append(audience_member)
 
-    # Sort by member_id to maintain order
     generated_audience.sort(key=lambda m: m.get("member_id", ""))
 
     if failed_members:
@@ -663,8 +642,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    # Required for Windows/macOS multiprocessing compatibility
-    import multiprocessing
-
-    multiprocessing.freeze_support()
     main()

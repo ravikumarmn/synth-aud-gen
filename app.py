@@ -1,9 +1,4 @@
-"""
-FastAPI service for Audience Characteristics Generation.
-
-Provides REST API endpoints to generate detailed audience member characteristics
-using persona templates and screener questions as input to Azure OpenAI LLM.
-"""
+"""FastAPI service for Audience Characteristics Generation."""
 
 import asyncio
 import json
@@ -18,7 +13,6 @@ from pydantic import BaseModel, Field
 from generate_audience_characteristics import (
     _create_azure_client,
     generate_audience_characteristics,
-    _parse_llm_response,
 )
 
 app = FastAPI(
@@ -27,7 +21,6 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -35,9 +28,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-
-# --- Pydantic Models ---
 
 
 class ScreenerQuestion(BaseModel):
@@ -149,9 +139,6 @@ class HealthResponse(BaseModel):
     version: str
 
 
-# --- API Endpoints ---
-
-
 @app.get("/health", response_model=HealthResponse, tags=["Health"])
 async def health_check() -> HealthResponse:
     """Health check endpoint."""
@@ -169,15 +156,8 @@ async def health_check() -> HealthResponse:
     summary="Generate audience characteristics",
     description="Generate detailed characteristics for audience members based on persona templates and screener questions.",
 )
-async def generate_characteristics(
-    request: GenerationRequest,
-) -> GenerationResponse:
-    """
-    Generate audience characteristics for all provided audiences.
-
-    This endpoint accepts audience data with personas and screener questions,
-    then generates detailed characteristics for each audience member using Azure OpenAI.
-    """
+async def generate_characteristics(request: GenerationRequest) -> GenerationResponse:
+    """Generate audience characteristics for all provided audiences."""
     start_time = time.time()
 
     # Initialize Azure OpenAI client
@@ -190,8 +170,6 @@ async def generate_characteristics(
         )
 
     try:
-        # Convert request to dict format expected by generation functions
-        # Prepare all audience data
         audience_data_list = [
             {
                 "persona": audience.persona.model_dump(),
@@ -265,11 +243,7 @@ async def generate_audience(
     audience: AudienceInput,
     max_concurrent: int = 10,
 ) -> GeneratedAudience:
-    """
-    Generate audience members.
-
-    Endpoint for generating audience members for one audience.
-    """
+    """Generate audience members for a single audience."""
     # Initialize Azure OpenAI client
     try:
         client, deployment = _create_azure_client()
@@ -280,13 +254,12 @@ async def generate_audience(
         )
 
     try:
-        audience_start_time = time.time()
         audience_data = {
             "persona": audience.persona.model_dump(),
             "screenerQuestions": [q.model_dump() for q in audience.screenerQuestions],
             "sampleSize": audience.sampleSize,
         }
-
+        audience_start_time = time.time()
         result = await generate_audience_characteristics(
             client=client,
             deployment=deployment,
@@ -369,7 +342,6 @@ async def generate_from_file(
         )
 
     try:
-        # Normalize all audience data
         normalized_audiences = [
             {
                 "persona": aud.get("persona", {}),
@@ -379,20 +351,18 @@ async def generate_from_file(
             for aud in audiences
         ]
 
-        # Run all audiences in parallel
         tasks = [
             generate_audience_characteristics(
                 client=client,
                 deployment=deployment,
-                audience_data=normalized_audience,
+                audience_data=aud,
                 audience_index=idx,
                 max_concurrent=max_concurrent,
             )
-            for idx, normalized_audience in enumerate(normalized_audiences)
+            for idx, aud in enumerate(normalized_audiences)
         ]
         enriched_audiences = await asyncio.gather(*tasks)
 
-        # Calculate totals
         total_generated = sum(
             aud["metadata"]["generation_stats"]["successfully_generated"]
             for aud in enriched_audiences
@@ -405,10 +375,8 @@ async def generate_from_file(
 
         await client.close()
 
-        # Convert IDs to strings if they exist (input may have int or string)
         project_id = data.get("projectId")
         user_id = data.get("userId")
-
         response = GenerationResponse(
             project_name=data.get("projectName"),
             project_description=data.get("projectDescription"),
@@ -425,14 +393,11 @@ async def generate_from_file(
             audiences=enriched_audiences,
         )
 
-        # Save output to file: {original_filename}_output.json
         original_name = file.filename or "output"
-        base_name = original_name.rsplit(".", 1)[0]  # Remove .json extension
+        base_name = original_name.rsplit(".", 1)[0]
         output_filename = f"data/{base_name}_output.json"
-
         with open(output_filename, "w", encoding="utf-8") as f:
             json.dump(response.model_dump(), f, indent=2, ensure_ascii=False)
-
         print(f"Output saved to: {output_filename}")
 
         return response
@@ -446,11 +411,6 @@ async def generate_from_file(
 
 
 if __name__ == "__main__":
-    import multiprocessing
     import uvicorn
 
-    # Required for Windows/macOS multiprocessing compatibility
-    multiprocessing.freeze_support()
-
-    # Run without reload to avoid multiprocessing spawn issues
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
