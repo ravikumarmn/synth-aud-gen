@@ -5,10 +5,11 @@ Provides REST API endpoints to generate detailed audience member characteristics
 using persona templates and screener questions as input to Azure OpenAI LLM.
 """
 
+import json
 import time
 from typing import Any
 
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, File, HTTPException, UploadFile, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -285,6 +286,126 @@ async def generate_audience(
 
         await client.close()
         return result
+
+    except Exception as e:
+        await client.close()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Generation failed: {str(e)}",
+        )
+
+
+@app.post(
+    "/generate/file",
+    response_model=GenerationResponse,
+    tags=["Generation"],
+    summary="Generate audience from file",
+    description="Upload a JSON file with persona input data and generate audience characteristics.",
+)
+async def generate_from_file(
+    file: UploadFile = File(..., description="JSON file with persona input data"),
+    max_concurrent: int = 10,
+) -> GenerationResponse:
+    """
+    Generate audience characteristics from an uploaded JSON file.
+
+    The file should follow the persona_input.json format with:
+    - projectName, projectDescription, projectId, userId, requestId (optional metadata)
+    - audiences[]: Array of audience data with persona, screenerQuestions, sampleSize
+    """
+    # Validate file type
+    if not file.filename or not file.filename.endswith(".json"):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="File must be a JSON file (.json extension)",
+        )
+
+    # Read and parse file content
+    try:
+        content = await file.read()
+        data = json.loads(content.decode("utf-8"))
+    except json.JSONDecodeError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Invalid JSON file: {str(e)}",
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"Failed to read file: {str(e)}",
+        )
+
+    # Validate required structure
+    audiences = data.get("audiences", [])
+    if not audiences:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="File must contain 'audiences' array with at least one audience",
+        )
+
+    start_time = time.time()
+
+    # Initialize Azure OpenAI client
+    try:
+        client, deployment = _create_azure_client()
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail=f"Azure OpenAI not configured: {str(e)}",
+        )
+
+    try:
+        enriched_audiences: list[dict[str, Any]] = []
+
+        for idx, audience_data in enumerate(audiences):
+            # Extract and normalize audience data from file format
+            persona = audience_data.get("persona", {})
+            screener_questions = audience_data.get("screenerQuestions", [])
+            sample_size = audience_data.get("sampleSize", 1)
+
+            normalized_audience = {
+                "persona": persona,
+                "screenerQuestions": screener_questions,
+                "sampleSize": sample_size,
+            }
+
+            result = await generate_audience_characteristics(
+                client=client,
+                deployment=deployment,
+                audience_data=normalized_audience,
+                audience_index=idx,
+                max_concurrent=max_concurrent,
+            )
+            enriched_audiences.append(result)
+
+        # Calculate totals
+        total_generated = sum(
+            aud["metadata"]["generation_stats"]["successfully_generated"]
+            for aud in enriched_audiences
+        )
+        total_failed = sum(
+            aud["metadata"]["generation_stats"]["failed"] for aud in enriched_audiences
+        )
+
+        processing_time = time.time() - start_time
+
+        await client.close()
+
+        return GenerationResponse(
+            project_name=data.get("projectName"),
+            project_description=data.get("projectDescription"),
+            project_id=data.get("projectId"),
+            user_id=data.get("userId"),
+            request_id=data.get("requestId"),
+            generation_model=f"azure:{deployment}",
+            provider="azure",
+            total_audiences=len(enriched_audiences),
+            total_members_processed=total_generated + total_failed,
+            total_successfully_generated=total_generated,
+            total_failed=total_failed,
+            processing_time_seconds=round(processing_time, 2),
+            audiences=enriched_audiences,
+        )
 
     except Exception as e:
         await client.close()

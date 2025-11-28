@@ -24,6 +24,12 @@ In your case with 48 combinations and 250/100 sample sizes, duplication is unavo
 python generate_audience_characteristics.py -i data/personas_input_10.json -o data/audience_output_10.json
 
 
+## With File:
+
+curl -X POST "http://localhost:8000/generate/file?max_concurrent=10"
+  -F "file=@data/persona_input.json"
+
+## Without File
 
 curl -X POST http://localhost:8000/generate
   -H "Content-Type: application/json"
