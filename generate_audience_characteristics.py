@@ -28,6 +28,7 @@ import asyncio
 from pathlib import Path
 from typing import Any
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from openai import AsyncAzureOpenAI
 from dotenv import load_dotenv
 
@@ -385,6 +386,8 @@ async def generate_audience_characteristics(
     Returns:
         Dictionary with generated_audience and metadata sections
     """
+    start_time = time.time()
+
     # Convert audience to members format
     members = convert_audience_to_members(audience_data, audience_index)
 
@@ -445,6 +448,8 @@ async def generate_audience_characteristics(
         print(f"  Failed to generate for: {', '.join(failed_members)}")
 
     persona = audience_data.get("persona", {})
+    generation_time = time.time() - start_time
+
     return {
         "generated_audience": generated_audience,
         "metadata": {
@@ -457,6 +462,8 @@ async def generate_audience_characteristics(
                 "successfully_generated": len(members) - len(failed_members),
                 "failed": len(failed_members),
             },
+            "generation_time_seconds": round(generation_time, 2),
+            "created_at": datetime.now(timezone.utc).isoformat(),
         },
     }
 
@@ -656,4 +663,8 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # Required for Windows/macOS multiprocessing compatibility
+    import multiprocessing
+
+    multiprocessing.freeze_support()
     main()

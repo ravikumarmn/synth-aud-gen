@@ -5,6 +5,7 @@ Provides REST API endpoints to generate detailed audience member characteristics
 using persona templates and screener questions as input to Azure OpenAI LLM.
 """
 
+import asyncio
 import json
 import time
 from datetime import datetime, timezone
@@ -190,29 +191,30 @@ async def generate_characteristics(
 
     try:
         # Convert request to dict format expected by generation functions
-        enriched_audiences: list[dict[str, Any]] = []
-
-        for idx, audience in enumerate(request.audiences):
-            audience_start_time = time.time()
-            audience_data = {
+        # Prepare all audience data
+        audience_data_list = [
+            {
                 "persona": audience.persona.model_dump(),
                 "screenerQuestions": [
                     q.model_dump() for q in audience.screenerQuestions
                 ],
                 "sampleSize": audience.sampleSize,
             }
+            for audience in request.audiences
+        ]
 
-            result = await generate_audience_characteristics(
+        # Run all audiences in parallel
+        tasks = [
+            generate_audience_characteristics(
                 client=client,
                 deployment=deployment,
                 audience_data=audience_data,
                 audience_index=idx,
                 max_concurrent=request.maxConcurrent,
             )
-            audience_time = time.time() - audience_start_time
-            result["metadata"]["generation_time_seconds"] = round(audience_time, 2)
-            result["metadata"]["created_at"] = datetime.now(timezone.utc).isoformat()
-            enriched_audiences.append(result)
+            for idx, audience_data in enumerate(audience_data_list)
+        ]
+        enriched_audiences = await asyncio.gather(*tasks)
 
         # Calculate totals
         total_generated = sum(
@@ -367,32 +369,28 @@ async def generate_from_file(
         )
 
     try:
-        enriched_audiences: list[dict[str, Any]] = []
-
-        for idx, audience_data in enumerate(audiences):
-            audience_start_time = time.time()
-            # Extract and normalize audience data from file format
-            persona = audience_data.get("persona", {})
-            screener_questions = audience_data.get("screenerQuestions", [])
-            sample_size = audience_data.get("sampleSize", 1)
-
-            normalized_audience = {
-                "persona": persona,
-                "screenerQuestions": screener_questions,
-                "sampleSize": sample_size,
+        # Normalize all audience data
+        normalized_audiences = [
+            {
+                "persona": aud.get("persona", {}),
+                "screenerQuestions": aud.get("screenerQuestions", []),
+                "sampleSize": aud.get("sampleSize", 1),
             }
+            for aud in audiences
+        ]
 
-            result = await generate_audience_characteristics(
+        # Run all audiences in parallel
+        tasks = [
+            generate_audience_characteristics(
                 client=client,
                 deployment=deployment,
                 audience_data=normalized_audience,
                 audience_index=idx,
                 max_concurrent=max_concurrent,
             )
-            audience_time = time.time() - audience_start_time
-            result["metadata"]["generation_time_seconds"] = round(audience_time, 2)
-            result["metadata"]["created_at"] = datetime.now(timezone.utc).isoformat()
-            enriched_audiences.append(result)
+            for idx, normalized_audience in enumerate(normalized_audiences)
+        ]
+        enriched_audiences = await asyncio.gather(*tasks)
 
         # Calculate totals
         total_generated = sum(
@@ -448,6 +446,11 @@ async def generate_from_file(
 
 
 if __name__ == "__main__":
+    import multiprocessing
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Required for Windows/macOS multiprocessing compatibility
+    multiprocessing.freeze_support()
+
+    # Run without reload to avoid multiprocessing spawn issues
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=False)
